@@ -1,0 +1,66 @@
+/* Wedding Planner App — guests + seating (gs-*), run sheet (rs-*) and the budget module (bu-*, engine/modules/budget.css) from the three wedding products, plus wd-* for the checklist and overview */
+.gs-of{font:700 15px var(--y-sans);color:var(--y-muted)}
+.gs-sub{margin:4px 0 8px;font:800 15px var(--y-display)}
+.gs-sub:not(:first-child){margin-top:16px}
+.gs-bar{display:grid;grid-template-columns:130px minmax(0,1fr) 36px;align-items:center;gap:10px;margin-bottom:6px;font-weight:600;font-size:14px}
+.gs-bar-track{height:12px;border-radius:99px;background:var(--y-sunken);overflow:hidden}
+.gs-bar-track i{display:block;height:100%;background:var(--w)}
+.gs-bar b{text-align:right}
+.gs-filter{margin:16px 0 14px}
+.gs-search{position:relative;width:min(100%,300px)}
+.gs-search > .y-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--y-muted)}
+.gs-search .y-input{padding-left:38px}
+.gs-no .y-input,.gs-no .y-select{color:var(--y-muted);text-decoration:line-through}
+.gs-no .y-select{text-decoration:none}
+
+/* seating */
+.gs-wait{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.gs-wait li{display:grid;padding:6px 12px;border:var(--y-border) solid var(--y-ink);border-radius:12px;background:var(--y-surface);font-weight:700;font-size:14px}
+.gs-wait li small{font-weight:500;font-size:12px;color:var(--y-muted)}
+.gs-wait li.is-pending{border-style:dashed;color:var(--y-ink-2)}
+.gs-tables{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:16px}
+.gs-table{display:grid;gap:10px;align-content:start;padding:14px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-xl);background:var(--y-surface)}
+.gs-table.is-over{border-color:var(--y-bad);box-shadow:4px 4px 0 var(--y-bad)}
+.gs-table-head{display:flex;align-items:center;gap:6px}
+.gs-table-head .pl-title-input{flex:1;min-width:0}
+.gs-table-head .pl-rowtools .pl-mini{width:40px}
+.gs-table-num{display:grid;place-items:center;flex:none;width:34px;height:34px;border:var(--y-border) solid var(--y-ink);border-radius:50%;background:var(--w);color:var(--on-w);font:800 15px var(--y-display)}
+.gs-table-cap{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--y-muted)}
+.gs-table-cap b{color:var(--y-ink);font-size:16px}
+.gs-seats.y-input{width:64px;min-height:40px;padding:0 8px;text-align:center}
+.gs-seated{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.gs-seated li{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:0 0 0 10px;border-radius:10px;background:var(--y-sunken);font-weight:600;font-size:14px}
+.gs-seated li small{margin-left:4px;font-weight:600;font-size:12px;color:var(--w-ink)}
+.gs-seated .gs-empty-seat{padding:10px;background:transparent;border:2px dashed var(--y-hair)}
+.gs-assign.y-select{border-style:dashed;font-size:14px}
+
+/* print sheet */
+.gs-sheet-tables{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm 6mm}
+.gs-sheet-tables section{break-inside:avoid;padding:3mm;border:.3mm solid #999;border-radius:2mm}
+.gs-sheet-tables h2{margin:0 0 1.5mm;font-size:11pt}
+.gs-sheet-tables ol{margin:0;padding-left:5mm;font-size:9.5pt}
+.gs-sheet-alpha{columns:2}
+@media (max-width:560px){
+  .gs-bar{grid-template-columns:96px minmax(0,1fr) 30px}
+  .gs-search{width:100%}
+}
+@media print{ .gs-assign,.gs-filter,.gs-search{display:none!important} }
+.rs-live{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rs-live > div{display:grid;gap:4px}
+.rs-live b{font:800 22px/1.2 var(--y-display)}
+.rs-live-label{font:800 12px var(--y-sans);letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.rs-sortbar{margin-bottom:12px}
+.rs-sortbar .y-banner{flex:1;padding:8px 12px}
+@media (max-width:560px){ .rs-live{grid-template-columns:1fr} }
+
+/* checklist + overview */
+.wd-tools{margin-bottom:12px}
+.wd-whens{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:18px;align-items:start}
+.wd-when{display:grid;gap:10px}
+.wd-when.is-done{background:var(--w-2-soft)}
+.wd-when .pl-checklist{margin:0}
+.wd-next{margin:0}
+.wd-total{max-width:420px}
+.wd-glance{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.wd-glance span{display:inline-flex;gap:6px;align-items:center;padding:6px 12px;border:2px solid var(--y-hair);border-radius:99px;background:var(--y-surface);font-weight:600;font-size:14px}
+.is-over{color:var(--y-bad)}
