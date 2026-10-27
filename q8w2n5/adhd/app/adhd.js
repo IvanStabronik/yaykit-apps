@@ -500,8 +500,9 @@
     ctx.save(); ctx.render();
   }
 
+  const SKIN = Object.assign({ slug: 'adhd-planner-app', name: 'ADHD Planner', world: 'focus' }, window.ADHD_SKIN);   // the Gothic edition sets its own
   P.create({
-    slug: 'adhd-planner-app', name: 'ADHD Planner', world: 'focus',
+    slug: SKIN.slug, name: SKIN.name, world: SKIN.world,
     welcome: 'Start with one big thing for today.',
     pages: [today, dump, focus, routines, weekPage, habits, meds],
     blank, sample, normalize,

@@ -100,7 +100,7 @@
 .ad-blocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .ad-block{display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 14px;border:var(--y-border) solid var(--y-ink);border-radius:16px;background:var(--y-surface);color:var(--y-ink);text-align:left;cursor:pointer;box-shadow:4px 4px 0 var(--y-ink);transition:transform var(--y-fast)}
 .ad-block:hover{transform:translate(-2px,-2px)}
-.ad-block b{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:12px;background:var(--y-ink);color:#fff;font:800 20px var(--y-display)}
+.ad-block b{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:12px;background:var(--y-ink);color:var(--y-canvas);font:800 20px var(--y-display)}
 .ad-block span{display:grid;font:800 16px/1.15 var(--y-display)}
 .ad-block small{font:600 12.5px var(--y-sans);color:var(--y-ink-2)}
 .ad-block.is-break b{background:var(--w-2);color:var(--on-w-2)}
