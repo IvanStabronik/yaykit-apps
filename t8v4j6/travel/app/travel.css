@@ -1,0 +1,42 @@
+/* Travel Planner App — voyage world + day cards (from Bachelorette Weekend), bookings, budget, packing, documents, ideas */
+[data-world="voyage"]{--w:#0B6FA4;--on-w:#FFFFFF;--w-ink:#075480;--w-soft:#DDF0FA;--w-2:#FFD24A;--w-2-soft:#FFF4C7;--on-w-2:#17181C}
+.tp-gap{height:12px}
+.tp-of{font:700 15px var(--y-sans);color:var(--y-muted)}
+.is-over{color:var(--y-bad)!important}
+.tp-days{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:16px;align-items:start;margin-top:22px}
+.tp-day{display:grid;gap:12px;padding:16px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface);box-shadow:var(--y-lift-sm)}
+.tp-day header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tp-day h3{margin:0;font:800 22px var(--y-display)}
+.tp-plans{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.tp-plan{display:grid;grid-template-columns:112px minmax(0,1fr);gap:4px 8px;padding:10px;border:var(--y-border) dashed var(--y-hair-2);border-radius:var(--y-r)}
+.tp-plan.is-booked{border-style:solid;border-color:var(--w);background:var(--w-soft)}
+.tp-plan-time .y-input{min-height:44px;padding:0 8px;font-weight:800;font-size:14px}
+.tp-plan-main{display:contents}
+.tp-plan-main .tp-where{grid-column:1/-1}
+.tp-what.y-input{min-height:44px;font-weight:700}
+.tp-where.y-input{min-height:44px;border-width:0 0 2px;border-radius:0;border-color:var(--y-hair-2);background:transparent;padding:0 2px;font-size:13.5px;font-weight:500}
+.tp-where.y-input:focus{border-color:var(--y-ink);box-shadow:none}
+.tp-plan-side{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tp-booked.y-check{min-height:44px;padding:4px 10px;background:transparent}
+.tp-booked.y-check:has(input:checked){background:var(--y-surface);border-color:var(--w)}
+.tp-booked.y-check:has(input:checked) .y-check-text{text-decoration:none;color:var(--w-ink);font-weight:800}
+.tp-day-ideas{list-style:none;margin:0;padding:10px 12px;display:grid;gap:6px;border-radius:var(--y-r);background:var(--w-2-soft)}
+.tp-day-ideas li{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px}
+.tp-day-ideas li span{color:var(--y-muted);font-size:13px}
+.tp-day-ideas svg{width:16px;height:16px;flex:none}
+.tp-bookings .pl-rec.is-muted{opacity:.82}
+.tp-cell{display:block;font-weight:700;padding:0 6px}
+.tp-meter{display:block;margin:12px 0 22px}
+.tp-settle{display:grid;gap:8px;margin-bottom:14px}
+.tp-move{margin:0;padding:14px 16px;border-radius:var(--y-r);background:var(--w);color:var(--on-w);font-size:17px}
+.tp-move .y-num{float:right;font:800 20px var(--y-display)}
+.tp-who{display:grid;gap:6px;margin:0}
+.tp-who div{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--y-hair);padding-top:6px}
+.tp-who dt{font-weight:800}.tp-who dd{margin:0;color:var(--y-muted)}
+.tp-rate{max-width:760px;align-items:start}
+.tp-packtools{margin-bottom:16px}
+.tp-bags{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px;align-items:start;margin-bottom:22px}
+.tp-bag-add{margin-top:10px}
+@media (max-width:560px){ .tp-plan{grid-template-columns:104px minmax(0,1fr)} .tp-move .y-num{float:none;display:block} }
+.tp-docgrid{grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr))}
+.tp-docs .y-input,.tp-docs .y-select{min-width:0}
