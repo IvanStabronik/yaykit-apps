@@ -1,0 +1,60 @@
+/* Pregnancy Planner App — bloom world (dusty rose + sage) and product layout on top of kit + planner engine */
+[data-world="bloom"]{--w:#A8475E;--on-w:#FFFFFF;--w-ink:#86344A;--w-soft:#F8E4E8;--w-2:#7FA38A;--w-2-soft:#E3EFE6;--on-w-2:#17181C}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+.pg-gap{margin:4px 0 16px}
+.pg-h2{margin:28px 0 12px;font:800 20px var(--y-display)}
+.pg-h3{margin:20px 0 8px;font:800 15px var(--y-display)}
+
+/* week */
+.pg-progress{margin:-6px 0 22px}
+.pg-meter{display:block;height:14px}
+.pg-tris{display:grid;grid-template-columns:13fr 14fr 13fr;margin-top:6px;color:var(--y-muted);font-size:12.5px;font-weight:700}
+.pg-tris span+span{border-left:2px solid var(--y-hair);padding-left:8px}
+.pg-size{display:flex;gap:10px;align-items:center;margin:0 0 14px;padding:14px 16px;border-radius:14px;background:var(--w-soft);color:var(--w-ink);font-size:17px}
+.pg-size svg{flex:none}
+.pg-size b{font-weight:800}
+.pg-tips{margin:0;padding-left:20px;display:grid;gap:6px}
+.pg-next{display:grid;gap:4px;margin:0 0 12px}
+.pg-next b{font:800 18px var(--y-display)}
+.pg-next span{color:var(--y-muted)}
+.pg-dates{margin-top:12px}
+
+/* visits */
+.pg-visits .pl-rec{min-width:0}
+.pg-past{opacity:.92}
+
+/* symptoms */
+.pg-chips{display:flex;flex-wrap:wrap;gap:8px}
+.pg-chips .pl-chip{min-height:44px}
+.pg-water{display:flex;align-items:center;gap:10px;min-height:48px}
+.pg-water b{min-width:28px;text-align:center;font:800 24px var(--y-display)}
+.pg-days{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pg-days li{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:12px;align-items:start;border-top:1px solid var(--y-hair);padding-top:10px}
+.pg-days li:first-child{border-top:0;padding-top:0}
+.pg-day-date{color:var(--y-muted)}
+.pg-day-date b{color:var(--y-ink)}
+.pg-day-main{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-width:0}
+.pg-day-note{flex-basis:100%;color:var(--y-ink-2)}
+.pg-day-tools{display:flex;gap:4px;align-items:center}
+
+/* kicks + contractions */
+.pg-kick{display:grid;gap:12px;justify-items:start;margin-bottom:16px}
+.pg-big{min-height:64px;padding:0 26px;font-size:18px}
+.pg-big b{font-size:22px}
+.pg-run{margin:0;font-weight:700;color:var(--w-ink)}
+.pg-run b{font:800 22px var(--y-display)}
+.pg-ck .pl-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pg-ck .y-kpi{min-width:0}
+
+/* bag + prep */
+.pg-bags,.pg-tri{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px;align-items:start;margin-bottom:22px}
+.pg-now{border-color:var(--w)!important;box-shadow:0 0 0 2px var(--w-soft)}
+
+@media (max-width:640px){
+  .pg-days li{grid-template-columns:minmax(0,1fr) auto}
+  .pg-day-date{grid-column:1/-1}
+  .pg-big{width:100%;justify-content:center}
+}
+@media (max-width:640px){
+}
+@media (max-width:640px){.pg-names .pl-cell:has(.pl-stars){grid-column:1/-1}}
