@@ -1,0 +1,46 @@
+/* Family Chore App — chore board (from Chore Board) and kids' routines. */
+/* Chore Board — product layout on top of kit + planner engine */
+.cb-kids{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:14px}
+.cb-kid{display:grid;gap:6px;justify-items:start;padding:14px 16px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface);text-align:left;cursor:pointer;transition:transform var(--y-fast),box-shadow var(--y-fast)}
+.cb-kid:hover{transform:translate(-2px,-2px);box-shadow:var(--y-lift)}
+.cb-kid.is-on{background:var(--kid);box-shadow:var(--y-lift);transform:rotate(-1deg)}
+.cb-kid-name{font:800 22px/1 var(--y-display)}
+.cb-kid-pts{font-weight:600;color:var(--y-ink-2)}
+.cb-kid-pts b{font:800 18px var(--y-display);color:var(--y-ink)}
+.cb-kid .y-meter{width:100%}
+.cb-kid .y-meter > i{background:var(--y-ink)}
+.cb-kid-reward{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--y-ink-2)}
+.cb-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+.cb-col{display:grid;gap:10px;padding:12px;border:var(--y-border) dashed var(--y-hair-2);border-radius:var(--y-r-lg)}
+.cb-col h2{display:flex;align-items:center;gap:8px;margin:0 0 2px;font:800 18px var(--y-display)}
+.cb-none{margin:4px 0;font-size:14px}
+.cb-chore{display:grid;gap:8px;padding:12px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r);background:var(--y-surface);box-shadow:var(--y-lift-sm)}
+.cb-chore.is-claimed{background:linear-gradient(90deg,var(--kid,var(--w-soft)) 8px,var(--y-surface) 8px)}
+.cb-chore.is-done{box-shadow:none;background:var(--w-soft);border-color:transparent}
+.cb-chore.is-done b{text-decoration:line-through;text-decoration-color:var(--w-ink)}
+.cb-chore-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.cb-pts{display:grid;place-items:center;flex:none;min-width:46px;padding:4px 6px;border:var(--y-border) solid var(--y-ink);border-radius:12px;background:var(--w-2);color:var(--on-w-2);font:800 18px/1 var(--y-display)}
+.cb-pts small{font:700 10px var(--y-sans)}
+.cb-who{justify-self:start;padding:3px 10px;border-radius:99px;background:var(--kid,var(--y-sunken));font-weight:800;font-size:12.5px}
+.cb-chore-btns{display:flex;flex-wrap:wrap;gap:6px}
+.cb-gap{height:14px}
+.cb-kidcards .pl-rec{border-top:10px solid var(--kid)}
+.cb-week{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--y-hair)}
+.cb-week-bars{display:grid;gap:4px}
+.cb-week-bar{display:grid;grid-template-columns:80px 1fr 36px;align-items:center;gap:8px;font-size:13.5px;font-weight:600}
+.cb-track{height:12px;border-radius:99px;background:var(--y-sunken);overflow:hidden}
+.cb-track i{display:block;height:100%;border-radius:99px}
+.cb-week-bar b{text-align:right}
+@media (max-width:1020px){ .cb-cols{grid-template-columns:1fr} }
+@media (max-width:560px){ .cb-week{grid-template-columns:1fr} }
+
+/* routines */
+.fc-routines{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.fc-routine{display:grid;gap:10px;align-content:start;border-top:8px solid var(--k,var(--w))}
+.fc-routine.is-done{background:var(--w-2-soft)}
+.fc-routine h3{display:flex;align-items:center;gap:8px;margin:0;font:800 19px var(--y-display)}
+.fc-who{display:inline-grid;place-items:center;min-width:30px;height:30px;padding:0 8px;border-radius:999px;background:var(--k,var(--w-soft));color:var(--y-ink);font:800 13px var(--y-sans)}
+.fc-steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fc-steps .y-check{min-height:52px;font-size:17px;font-weight:700}
+.fc-stars{font-size:13px;font-weight:700;color:var(--y-ink-2)}
+.fc-tools{gap:12px;margin:4px 0 14px;flex-wrap:wrap}
