@@ -1,0 +1,80 @@
+/* Job Search App — pipeline (from Job Search Tracker), interview practice (from Interview Prep), offer comparison. */
+/* Job Search Tracker — product layout on top of kit + planner engine */
+.js-goal{display:grid;gap:10px;align-content:start}
+.js-goal .y-kicker{margin:0}
+.js-goal-row{display:flex;align-items:center;gap:10px;font:800 18px var(--y-display)}
+.js-goal-row > b{font-size:48px;line-height:1}
+.js-goal-in.y-input{width:72px;text-align:center;font:800 20px var(--y-display)}
+.js-goal .y-hint{margin:0}
+.js-next{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--y-hair)}
+.js-next > div{display:grid;gap:1px;min-width:0}
+.js-cols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:start}
+.js-col{display:grid;gap:10px;padding:10px;border-radius:var(--y-r-lg);background:var(--y-sunken)}
+.js-col h2{display:flex;align-items:center;gap:6px;margin:2px 4px;font:800 16px var(--y-display)}
+.js-col--offer{background:var(--w-2-soft)}
+.js-card{display:grid;gap:4px;padding:10px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r);background:var(--y-surface);box-shadow:var(--y-lift-sm)}
+.js-card.is-late{border-color:var(--y-bad);box-shadow:3px 3px 0 var(--y-bad)}
+.js-card b{font:800 15px/1.2 var(--y-display)}
+.js-co{font-size:13px;font-weight:700;color:var(--w-ink)}
+.js-step{font-size:12.5px;color:var(--y-ink-2)}
+.js-card-foot{display:flex;flex-wrap:wrap;gap:4px}
+.js-move{display:flex;align-items:center;justify-content:space-between;margin-top:2px}
+.js-none{margin:2px 6px}
+.js-tools{gap:12px}
+.js-search{position:relative;width:min(100%,280px)}
+.js-search > .y-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--y-muted)}
+.js-search .y-input{padding-left:38px}
+.js-recs{--pl-rec:360px}
+.js-follow{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.js-follow li{display:grid;grid-template-columns:96px minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:8px 8px 8px 12px;border:var(--y-border) solid var(--y-hair);border-radius:var(--y-r)}
+.js-follow li.is-late{border-color:var(--y-bad);background:var(--y-bad-soft)}
+.js-follow-when{display:grid}
+.js-follow-when b{font:800 18px var(--y-display)}
+.js-follow-when span{font-size:12px;color:var(--y-muted);font-weight:700}
+.js-follow-main{display:grid;min-width:0}
+@media (max-width:1100px){ .js-cols{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .js-cols{grid-template-columns:1fr} .js-search{width:100%} .js-follow li{grid-template-columns:1fr auto} .js-follow-when{grid-column:1/-1;display:flex;gap:8px;align-items:baseline} }
+
+/* Interview Prep — product layout on top of kit + planner engine */
+.ip-tools{gap:12px;margin:4px 0}
+.ip-stage{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.ip-card{display:grid;align-content:center;gap:18px;min-height:340px;padding:32px;border:var(--y-border-bold) solid var(--y-ink);border-radius:var(--y-r-xl);background:var(--y-surface);box-shadow:8px 8px 0 var(--y-ink);text-align:left;cursor:pointer;transition:transform var(--y-mid) var(--y-spring),background-color var(--y-mid)}
+.ip-card:hover{transform:translate(-2px,-2px) rotate(-.4deg)}
+.ip-card.is-flipped{background:var(--w-soft)}
+.ip-card-meta{font:800 12px var(--y-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--w-ink)}
+.ip-q{font:800 clamp(26px,3.2vw,40px)/1.08 var(--y-display);letter-spacing:-.02em}
+.ip-a{font-size:18px;line-height:1.55;font-weight:500;white-space:pre-line}
+.ip-hint{font-weight:700;color:var(--y-muted)}
+.ip-side{display:grid;gap:16px;align-content:start}
+.ip-timer{grid-template-columns:1fr}
+.ip-timer .pl-timer-btns{justify-content:flex-start}
+.ip-rate{display:grid;gap:8px}
+.ip-rate-btn{justify-content:flex-start}
+.ip-nav{justify-content:space-between}
+.ip-deck{display:grid;gap:12px}
+.ip-edit{display:grid;gap:6px;padding:12px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface)}
+.ip-edit-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.ip-mini.y-select{width:auto;min-height:40px;padding:0 30px 0 10px;border-color:var(--y-hair);font-size:13px;font-weight:700;background-position:right 10px center}
+.ip-q-in.y-textarea{min-height:44px;padding:8px 10px;font:800 17px/1.3 var(--y-display)}
+.ip-edit .y-textarea{min-height:44px;padding:8px 10px;resize:none}
+.ip-sheet li{margin-bottom:3mm}
+.ip-sheet p{margin:1mm 0 0!important;color:#444}
+@media (max-width:1020px){ .ip-stage{grid-template-columns:1fr} .ip-card{min-height:260px;padding:22px} }
+
+/* offer comparison */
+.jb-compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-bottom:12px}
+.jb-offer{display:grid;gap:10px;align-content:start}
+.jb-offer.is-best{box-shadow:6px 6px 0 var(--w);border-color:var(--w-ink)}
+.jb-offer-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.jb-offer-head h3{margin:0 auto 0 0;font:800 20px var(--y-display)}
+.jb-total{margin:0;font:800 34px/1 var(--y-display)}
+.jb-total small{font-size:14px;font-weight:700;color:var(--y-ink-2)}
+.jb-bar{display:flex;height:16px;border-radius:999px;background:var(--y-hair);overflow:hidden}
+.jb-seg--base{background:var(--w)}.jb-seg--bonus{background:var(--w-2)}.jb-seg--equity{background:#0E9F7E}.jb-seg--benefits{background:#E5533D}
+.jb-facts{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin:0}
+.jb-facts div{display:grid;gap:1px}
+.jb-facts dt{font-size:12px;font-weight:700;color:var(--y-ink-2)}
+.jb-facts dd{margin:0;font:800 17px var(--y-display)}
+.jb-key{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 18px;font-size:12.5px;font-weight:600;color:var(--y-ink-2)}
+.jb-key i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.jb-offers{--pl-rec:380px}
