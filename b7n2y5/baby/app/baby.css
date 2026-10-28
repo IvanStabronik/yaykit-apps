@@ -1,0 +1,68 @@
+/* Baby Tracker App — nursery world + product layout on top of kit + planner engine */
+[data-world="nursery"]{--w:#2F7E8C;--on-w:#FFFFFF;--w-ink:#1E5C67;--w-soft:#DDF0F2;--w-2:#F6B49A;--w-2-soft:#FDE9E0;--on-w-2:#17181C}
+.xm-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+
+/* today */
+.bt-log{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:22px 0}
+.bt-card{display:grid;gap:12px;align-content:start}
+.bt-card.is-on{background:var(--w-soft)}
+.bt-btns{display:flex;flex-wrap:wrap;gap:10px}
+.bt-btns .y-btn{flex:1 1 120px;min-height:56px;font-size:17px;justify-content:center}
+.bt-btns .y-btn--sm{flex:0 0 auto;min-height:44px;font-size:15px}
+.bt-three .y-btn{flex:1 1 80px}
+.bt-run{margin:0;font-weight:700;color:var(--w-ink);min-height:24px}
+.bt-run b{font:800 26px var(--y-display);margin-left:6px}
+.bt-bottle{display:grid;grid-template-columns:minmax(64px,1fr) auto auto;gap:8px;align-items:center}
+.bt-bottle .y-input{min-height:48px}
+.bt-bottle .y-btn{min-height:48px}
+.bt-line{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.bt-line li{display:grid;grid-template-columns:76px 34px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:48px;border-top:1px solid var(--y-hair)}
+.bt-line li:first-child{border-top:0}
+.bt-time{font-weight:800;font-size:14px}
+.bt-dot{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--w-soft);color:var(--w-ink)}
+.bt-dot svg{width:16px;height:16px}
+.bt-sleep .bt-dot{background:#E6E3FA;color:#3F3A8C}
+.bt-diaper .bt-dot{background:var(--w-2-soft);color:#8A3D1F}
+.bt-what{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bt-what b{margin-right:4px}
+
+/* log */
+.bt-logbar{margin:4px 0 16px}
+
+/* sleep */
+.bt-bars{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.bt-bars li{display:grid;grid-template-columns:96px minmax(0,1fr) 96px;align-items:center;gap:12px;min-height:36px}
+.bt-bday{font-weight:800}
+.bt-bday small{color:var(--y-muted);font-weight:600}
+.bt-bar{display:flex;height:26px;border-radius:13px;background:var(--y-hair);overflow:hidden}
+.bt-bar i,.bt-key i{display:block;height:100%}
+.bt-night{background:#3F3A8C}
+.bt-nap{background:var(--w)}
+.bt-btot{text-align:right;font-weight:800}
+.bt-key{display:flex;gap:18px;margin:14px 0 0;color:var(--y-muted);font-size:14px}
+.bt-key span{display:flex;align-items:center;gap:6px}
+.bt-key i{width:14px;height:14px;border-radius:4px}
+
+/* growth, health, milestones */
+.bt-gap{margin-top:14px}
+.bt-chg{font-weight:800;color:var(--w-ink);padding:0 6px}
+.bt-meds{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:14px;margin:0 0 22px}
+.bt-medcard{display:grid;gap:6px;align-content:start}
+.bt-medcard .y-btn{justify-self:start;margin-top:4px}
+.bt-firsts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:14px;margin:0 0 22px}
+.bt-first{display:grid;gap:4px;align-content:start;background:var(--w-2-soft)}
+.bt-first svg{color:#8A3D1F;width:24px;height:24px}
+.bt-first b{font:800 18px var(--y-display)}
+.bt-first span{color:var(--y-muted);font-size:14px}
+.bt-first em{font-size:14px}
+
+@media (max-width:1020px){.bt-log{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){
+  .bt-line li{grid-template-columns:70px 30px minmax(0,1fr) auto;gap:8px}
+  .bt-time{font-size:13px;white-space:nowrap}
+  .bt-what{white-space:normal}
+  .bt-bars li{grid-template-columns:62px minmax(0,1fr) 72px;gap:8px}
+  .bt-bday small{display:none}
+  .bt-stab [data-label="Date"],.bt-stab [data-label="Note"]{grid-column:1/-1}
+}
