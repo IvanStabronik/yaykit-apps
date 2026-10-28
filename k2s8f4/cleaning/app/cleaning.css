@@ -1,0 +1,42 @@
+/* Cleaning Schedule App — fresh world, quick reset (from Clean Loop) and the cleaning schedule. */
+/* Clean Loop — product layout on top of kit + planner engine */
+.cl-top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.cl-focus{display:grid;gap:10px;align-content:start}
+.cl-focus .y-kicker{margin:0}
+.cl-focus .y-input--big{font-size:clamp(22px,2.6vw,32px);min-height:50px}
+.cl-focus .y-input--big::placeholder{color:var(--on-w)}
+.cl-stats{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:6px;font-weight:600}
+.cl-stats b{font:800 22px var(--y-display);margin-right:4px}
+.cl-timer{grid-template-columns:1fr;align-content:center}
+.cl-timer .pl-timer-btns{justify-content:flex-start}
+.cl-switches{margin:14px 0;gap:6px 18px}
+.cl-task{align-items:center}
+.cl-task .pl-ci-text{padding:4px 8px 0}
+.cl-task .pl-ci-meta{padding-top:2px}
+.cl-go{flex:none}
+.cl-more{margin-top:12px}
+.cl-zones{--pl-rec:420px}
+
+@media (max-width:1020px){ .cl-top{grid-template-columns:1fr} }
+@media (max-width:560px){
+  .cl-task{flex-wrap:wrap}
+  .cl-task .pl-ci-main{flex:1 1 calc(100% - 60px)}
+  .cl-go{margin-left:50px}
+}
+@media print{ .cl-timer,.cl-switches,.cl-go{display:none!important} .cl-top{grid-template-columns:1fr} }
+
+
+[data-world="fresh"]{--w:#137A5C;--on-w:#FFFFFF;--w-ink:#0F6149;--w-soft:#D7F5E9;--w-2:#7CC7FF;--w-2-soft:#E3F3FF;--on-w-2:#17181C}
+/* schedule */
+.cs-groups{display:grid;gap:14px}
+.cs-group.is-late{border-color:#B42318;box-shadow:5px 5px 0 #B42318}
+.cs-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.cs-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:2px solid var(--y-hair);border-radius:14px;background:var(--y-surface)}
+.cs-list b{display:block;font:800 16px/1.2 var(--y-display)}
+.cs-list small{color:var(--y-ink-2);font-weight:600}
+.cs-list .is-over{color:#B42318;font-weight:800}
+.cs-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:6px}
+.cs-week div{display:grid;gap:2px;padding:8px;border-radius:12px;background:var(--y-sunken);font-size:12px;font-weight:700;text-align:center}
+.cs-week div.is-today{background:var(--w-soft);outline:2px solid var(--w)}
+.cs-week b{font:800 20px var(--y-display)}
+@media (max-width:640px){ .cs-week{grid-template-columns:repeat(4,minmax(0,1fr))} }
