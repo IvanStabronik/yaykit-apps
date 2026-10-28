@@ -1,0 +1,50 @@
+/* Rental Property Tracker App — estate world (slate blue + brick) and layout on top of kit + planner engine */
+[data-world="estate"]{--w:#34557A;--on-w:#FFFFFF;--w-ink:#26405E;--w-soft:#E1E9F2;--w-2:#B5523B;--w-2-soft:#F7E2DC;--on-w-2:#FFFFFF}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+.is-over{color:var(--y-bad)!important}
+.rp-nav{display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap}
+.rp-month{min-width:150px;text-align:center;font-weight:800}
+/* overview */
+.rp-roll,.rp-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rp-roll li{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;align-items:center;gap:10px;min-height:48px;border-top:1px solid var(--y-hair);padding-top:8px}
+.rp-roll li:first-child,.rp-list li:first-child{border-top:0;padding-top:0}
+.rp-roll li.is-late .rp-amt{color:var(--y-bad)}
+.rp-roll-main,.rp-list li > span:first-child{display:grid;min-width:0}
+.rp-roll-main b,.rp-list b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rp-roll-main .pl-muted,.rp-list .pl-muted{font-size:13px}
+.rp-amt{font-weight:800;text-align:right}.rp-amt small{color:var(--y-muted);font-weight:600}
+.rp-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;border-top:1px solid var(--y-hair);padding-top:8px}
+.rp-years{display:grid;gap:8px;margin:0}
+.rp-years div{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:10px;align-items:baseline;border-top:1px solid var(--y-hair);padding-top:8px}
+.rp-years div:first-child{border-top:0;padding-top:0}
+.rp-years dt{font-weight:800}.rp-years dd{margin:0;text-align:right;font-weight:700}.rp-years small{color:var(--y-muted);font-weight:600}
+.rp-net{color:var(--y-good)}
+/* rent roll */
+.rp-rows{display:grid;gap:12px}
+.rp-row{display:grid;gap:10px;padding:14px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r);background:var(--y-surface)}
+.rp-row.is-late{background:var(--y-bad-soft)}
+.rp-row.is-paid{background:var(--w-soft)}
+.rp-row-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rp-row-head > span{display:grid}.rp-row-head .pl-muted{font-size:13px}
+.rp-row-fields{display:grid;grid-template-columns:120px 180px 140px 130px auto;gap:10px;align-items:end}
+.rp-row-fields .y-btn{justify-self:start;min-height:44px}
+/* properties */
+.rp-props{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,560px),1fr));gap:18px;align-items:start}
+.rp-prop{display:grid;gap:12px}
+.rp-prop-head{display:flex;align-items:center;gap:8px}.rp-prop-head .pl-title-input{flex:1}
+.rp-flow{margin:0}
+.rp-sub{margin:4px 0 0;font:800 15px var(--y-display)}
+/* expenses */
+.rp-add{display:grid;grid-template-columns:170px minmax(0,1fr) 190px 110px minmax(0,1.2fr) auto;gap:10px;align-items:center}
+.rp-chips{margin-bottom:12px}
+.rp-sum-wrap{overflow-x:auto}
+.rp-sum{width:100%;border-collapse:collapse;font-size:14px}
+.rp-sum th,.rp-sum td{padding:8px 10px;border-bottom:1px solid var(--y-hair);text-align:right;white-space:nowrap}
+.rp-sum th:first-child,.rp-sum td:first-child{text-align:left}
+.rp-sum th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--y-muted)}
+.rp-sum-in td{font-weight:800;color:var(--w-ink)}
+.rp-sum-net td{font-weight:800;border-top:2px solid var(--y-ink)}
+.is-done .y-cell-title .y-input{color:var(--y-muted)}
+@media (max-width:900px){.rp-add{grid-template-columns:1fr 1fr}.rp-add .y-btn{grid-column:1/-1}.rp-row-fields{grid-template-columns:1fr 1fr}.rp-row-fields .y-btn{grid-column:1/-1}}
+@media (max-width:560px){.rp-roll li{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}.rp-roll li .pl-pill,.rp-roll li .y-btn{justify-self:start}.rp-roll li .y-btn{grid-column:1/-1}.rp-years div{grid-template-columns:repeat(3,minmax(0,1fr))}.rp-years dt{grid-column:1/-1}}
+@media (max-width:560px){.rp-row-fields label:nth-child(2){grid-column:1/-1}}
