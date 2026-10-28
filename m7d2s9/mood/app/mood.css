@@ -1,0 +1,73 @@
+/* Mood Journal App — sky world + check-in, year in pixels, journal, thought record, self-care, insights on top of kit + planner engine */
+[data-world="sky"]{--w:#2F6FA8;--on-w:#FFFFFF;--w-ink:#225482;--w-soft:#E0ECF7;--w-2:#F08A6C;--w-2-soft:#FDE6DE;--on-w-2:#17181C}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+.mj-m1{--m:#C2413B}.mj-m2{--m:#EE8A4F}.mj-m3{--m:#F3C94F}.mj-m4{--m:#8CCB7E}.mj-m5{--m:#2E9E7A}
+.mj-link{min-height:40px;padding:0;border:0;background:none;color:var(--w-ink);font:700 13px var(--y-body);text-decoration:underline;cursor:pointer}
+
+/* check-in */
+.mj-ed{display:grid;gap:18px}
+.mj-moods{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.mj-mood{display:grid;justify-items:center;gap:6px;min-height:76px;padding:10px 4px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r);background:var(--y-surface);color:var(--y-ink);font:700 14px var(--y-body);cursor:pointer}
+.mj-mood i{width:28px;height:28px;border-radius:50%;background:var(--m);border:2px solid var(--y-ink)}
+.mj-mood.is-on{background:var(--w-soft);box-shadow:0 0 0 3px var(--w) inset}
+.mj-chips{gap:8px}
+.mj-chip.is-on{background:var(--w);border-color:var(--w);color:var(--on-w)}
+.mj-prompt{display:flex;gap:10px;align-items:flex-start;margin:0;padding:12px 14px;border-radius:14px;background:var(--w-2-soft);font-weight:700}
+.mj-prompt .y-icon{flex:none;margin-top:2px;color:var(--y-ink)}
+.mj-grat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+
+/* year in pixels */
+.mj-ynav{display:inline-flex;align-items:center;gap:6px;font:800 18px var(--y-display)}
+.mj-grid{display:grid;grid-template-columns:26px repeat(12,minmax(0,1fr));gap:3px;max-width:640px;margin:0 auto}
+.mj-mh,.mj-dn{display:grid;place-items:center;font:700 11px var(--y-body);color:var(--y-muted)}
+.mj-px{aspect-ratio:1.6/1;border-radius:4px;background:var(--m,var(--y-sunken));border:1px solid var(--y-hair);cursor:pointer}
+.mj-px.is-void{background:transparent;border-color:transparent;cursor:default}
+.mj-px.is-future{opacity:.45;cursor:default}
+.mj-px.is-today{outline:2px solid var(--y-ink);outline-offset:1px}
+.mj-px.is-sel{outline:3px solid var(--w);outline-offset:1px}
+.mj-avg{aspect-ratio:1.6/1;margin-top:6px;cursor:default}
+.mj-avgl{margin-top:6px}
+.mj-key{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin:16px 0 0;font-weight:600;font-size:13px}
+.mj-key span{display:inline-flex;align-items:center;gap:6px}
+.mj-key i{width:14px;height:14px;border-radius:4px;background:var(--m)}
+
+/* journal */
+.mj-tools{gap:12px;margin-bottom:14px}
+.mj-search{position:relative;width:min(100%,340px)}
+.mj-search > .y-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--y-muted)}
+.mj-search .y-input{padding-left:38px}
+.mj-entries{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:12px}
+.mj-entry{display:grid;gap:6px;align-content:start;padding:14px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r);background:var(--y-surface)}
+.mj-entry header{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mj-dot{width:14px;height:14px;border-radius:50%;background:var(--m);border:2px solid var(--y-ink)}
+.mj-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.mj-tag{padding:2px 8px;border-radius:99px;background:var(--y-sunken);font-size:12.5px;font-weight:700}
+.mj-tag.is-emo{background:var(--w-soft);color:var(--w-ink)}
+.mj-note{margin:0;white-space:pre-wrap}
+.mj-gl{display:flex;gap:6px;align-items:center;margin:0;color:var(--y-muted);font-size:13.5px}
+
+/* self-care */
+.mj-week{display:flex;gap:8px;margin-bottom:16px}
+.mj-week span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:2px solid var(--y-ink);background:var(--y-surface);font-size:13px}
+.mj-week span.is-on{background:var(--w);border-color:var(--w);color:var(--on-w)}
+.mj-week span.is-today{box-shadow:0 0 0 3px var(--w-2)}
+.mj-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;align-items:start;margin-bottom:18px}
+.mj-idea.y-input{border-color:transparent;background:transparent;padding-left:4px}
+.is-done .mj-idea.y-input{color:var(--y-muted)}
+
+/* insights */
+.mj-insight{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.mj-insight li{display:grid;grid-template-columns:96px minmax(0,1fr) 34px auto;align-items:center;gap:10px;font-weight:600;font-size:14px}
+.mj-bar{height:12px;border-radius:99px;background:var(--y-sunken);overflow:hidden}
+.mj-bar i{display:block;height:100%;background:var(--m,var(--w))}
+
+@media (max-width:640px){
+  .mj-moods{gap:4px}.mj-mood{min-height:68px;font-size:12px;padding:8px 2px}.mj-mood i{width:22px;height:22px}
+  .mj-grat{grid-template-columns:1fr}
+  .mj-grid{grid-template-columns:20px repeat(12,minmax(0,1fr));gap:2px}
+  .mj-px{border-radius:3px}
+  .mj-week{gap:4px}.mj-week span{width:40px;height:40px}
+  .mj-insight li{grid-template-columns:80px minmax(0,1fr) 30px}.mj-insight li small{display:none}
+}
+.mj-thoughts{--pl-rec:440px}
+.mj-cope .pl-cell .y-input{width:100%}
