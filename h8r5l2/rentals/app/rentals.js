@@ -92,7 +92,7 @@
   /* ---------- math ---------- */
   const unitName = (s, id) => { const x = s.units.find(v => v.id === id); if (!x) return 'Unknown unit'; const p = s.props.find(v => v.id === x.prop); return [p && p.name, x.name].filter(Boolean).join(' · ') || 'Unnamed unit'; };
   const propName = (s, id) => (s.props.find(v => v.id === id) || {}).name || 'No property';
-  const unitOpts = s => s.units.map(x => [x.id, unitName(s, x)]);
+  const unitOpts = s => s.units.map(x => [x.id, unitName(s, x.id)]);
   const propOpts = s => s.props.map(x => [x.id, x.name || 'Unnamed property']);
   /* the tenant whose lease covers any part of the month (latest start wins) */
   function tenantFor(s, unitId, ym) {
