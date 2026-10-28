@@ -1,0 +1,103 @@
+/* Symptom Tracker App — calm world (lavender + soft teal) and layout on top of kit + planner engine */
+[data-world="calm"]{--w:#6B5BB5;--on-w:#FFFFFF;--w-ink:#4F4196;--w-soft:#ECE8F8;--w-2:#7CC8BE;--w-2-soft:#E1F3F0;--on-w-2:#17181C;
+  --sy-low:#CDEBE4;--sy-mid:#FCE3B5;--sy-high:#F7C6C2;--sy-low-ink:#1F6B5C;--sy-mid-ink:#7A4B00;--sy-high-ink:#9B2C24}
+.xm-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+.is-over{color:var(--y-bad)!important}
+
+/* spoons */
+.sy-spoonset{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;align-items:end}
+.sy-spoons{display:flex;flex-wrap:wrap;gap:5px;padding:6px 0}
+.sy-spoons i{width:18px;height:28px;border-radius:9px 9px 6px 6px;border:2px solid var(--w);background:var(--y-surface)}
+.sy-spoons i.is-planned{background:var(--w-soft)}
+.sy-spoons i.is-spent{background:var(--w)}
+.sy-spoons i.is-over{border-color:var(--y-bad);border-style:dashed}
+.sy-spoonbar-wrap .pl-hint{margin:2px 0 0}
+.sy-cost{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--y-muted);white-space:nowrap}
+.sy-cost .y-input{width:58px;min-height:40px;padding:0 8px;text-align:center}
+
+/* meds today */
+.sy-meds .pl-ci{min-height:44px}
+.sy-prn{display:grid;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--y-hair)}
+.sy-prn-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* day editor */
+.sy-scale{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px;max-width:620px}
+.sy-pain{min-height:44px;border:2px solid var(--y-ink);border-radius:12px;background:var(--y-surface);color:var(--y-ink);font:800 16px var(--y-display);cursor:pointer}
+.sy-pain.sy-p0,.sy-pain.sy-p1,.sy-pain.sy-p2,.sy-pain.sy-p3{background:var(--sy-low)}
+.sy-pain.sy-p4,.sy-pain.sy-p5,.sy-pain.sy-p6{background:var(--sy-mid)}
+.sy-pain.sy-p7,.sy-pain.sy-p8,.sy-pain.sy-p9,.sy-pain.sy-p10{background:var(--sy-high)}
+.sy-pain.is-on{background:var(--y-ink);color:var(--y-surface);box-shadow:0 0 0 3px var(--w)}
+.sy-chips{gap:8px}
+.sy-chips .pl-chip{min-height:44px}
+.sy-syms .sy-sev1.is-on{background:var(--sy-low);color:var(--sy-low-ink);border-color:var(--sy-low-ink)}
+.sy-syms .sy-sev2.is-on{background:var(--sy-mid);color:var(--sy-mid-ink);border-color:var(--sy-mid-ink)}
+.sy-syms .sy-sev3.is-on{background:var(--sy-high);color:var(--sy-high-ink);border-color:var(--sy-high-ink)}
+.sy-sevtag{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+
+/* month */
+.sy-nav{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
+.sy-filter{margin:0 0 14px}
+.sy-month{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:10px}
+.sy-wd{text-align:center;font-size:12px;font-weight:800;color:var(--y-muted);text-transform:uppercase}
+.sy-cell{position:relative;display:grid;grid-template-rows:auto 1fr;justify-items:start;align-content:start;min-height:64px;padding:6px 8px;border:2px solid var(--y-hair-2);border-radius:12px;background:var(--y-surface);color:var(--y-ink);text-align:left;cursor:pointer;font:inherit}
+.sy-cell b{font-size:13px}
+.sy-cell.is-out{opacity:.45}
+.sy-cell.is-dim{opacity:.3}
+.sy-cell.is-today{border-color:var(--y-ink)}
+.sy-cell.is-sel{box-shadow:0 0 0 3px var(--w);border-color:var(--w)}
+.sy-cell.sy-p0,.sy-cell.sy-p1,.sy-cell.sy-p2,.sy-cell.sy-p3{background:var(--sy-low)}
+.sy-cell.sy-p4,.sy-cell.sy-p5,.sy-cell.sy-p6{background:var(--sy-mid)}
+.sy-cell.sy-p7,.sy-cell.sy-p8,.sy-cell.sy-p9,.sy-cell.sy-p10{background:var(--sy-high)}
+.sy-cp{justify-self:end;align-self:end;font:800 20px var(--y-display)}
+.sy-fl{position:absolute;top:6px;right:6px;color:var(--sy-high-ink)}
+.sy-fl .y-icon{width:15px;height:15px}
+.sy-key{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 18px;font-size:13px;color:var(--y-muted);font-weight:600}
+.sy-key span{display:inline-flex;align-items:center;gap:6px}
+.sy-key i{display:inline-block;width:14px;height:14px;border-radius:4px}
+.sy-key i.sy-p1{background:var(--sy-low)}.sy-key i.sy-p5{background:var(--sy-mid)}.sy-key i.sy-p8{background:var(--sy-high)}
+.sy-key .y-icon{width:14px;height:14px;color:var(--sy-high-ink)}
+
+/* meds page */
+.sy-adh{display:grid;gap:10px}
+.sy-adh-row{display:grid;grid-template-columns:minmax(0,1fr) auto 52px;gap:12px;align-items:center}
+.sy-adh-name{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sy-dots{display:flex;gap:5px}
+.sy-dots i{width:18px;height:18px;border-radius:50%;border:2px solid var(--w);background:var(--y-surface)}
+.sy-dots i.is-on{background:var(--w)}
+.sy-dots i.is-part{background:var(--w-soft)}
+
+/* patterns */
+.sy-strip{display:grid;grid-template-columns:repeat(30,1fr);gap:4px;align-items:end;height:140px}
+.sy-bar{display:flex;align-items:flex-end;height:100%;border-radius:6px;background:var(--y-sunken)}
+.sy-bar i{display:block;width:100%;border-radius:6px;background:var(--w)}
+.sy-bar i.sy-p7,.sy-bar i.sy-p8,.sy-bar i.sy-p9,.sy-bar i.sy-p10{background:#C2453C}
+.sy-bar.is-empty i{background:transparent}
+.sy-cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0}
+.sy-cmp div{display:grid;gap:2px;padding:12px;border-radius:14px;background:var(--w-soft)}
+.sy-cmp dt{font-weight:700;font-size:13.5px}
+.sy-cmp dd{margin:0;font:800 30px var(--y-display);color:var(--w-ink)}
+.sy-row{display:grid;grid-template-columns:130px minmax(0,1fr) 28px 78px;gap:10px;align-items:center;margin-bottom:8px;font-weight:600;font-size:14px}
+.sy-row--trig{grid-template-columns:130px minmax(0,1fr) 28px}
+.sy-track{height:12px;border-radius:99px;background:var(--y-sunken);overflow:hidden}
+.sy-track i{display:block;height:100%;background:var(--w)}
+.sy-sevavg{font-size:12.5px}
+
+/* doctors */
+.sy-print{margin-bottom:18px}
+
+@media (max-width:640px){
+  .sy-spoonset{grid-template-columns:1fr}
+  .sy-scale{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .sy-month{gap:3px}
+  .sy-cell{min-height:48px;padding:4px;border-radius:9px}
+  .sy-cp{font-size:15px}
+  .sy-fl{top:3px;right:3px}
+  .sy-strip{gap:2px;height:100px}
+  .sy-cmp{grid-template-columns:1fr}
+  .sy-row{grid-template-columns:100px minmax(0,1fr) 24px}
+  .sy-row .sy-sevavg{display:none}
+  .sy-row--trig{grid-template-columns:100px minmax(0,1fr) 24px}
+  .sy-adh-row{grid-template-columns:minmax(0,1fr) auto 40px;gap:8px}
+  .sy-dots{gap:3px}.sy-dots i{width:13px;height:13px}
+}
