@@ -1,0 +1,12 @@
+/* Cottagecore skin for the Life Planner — sage, dusty rose and cream, serif headings (Fraunces, SIL OFL, app/fonts). Light paper only, so slides, PDF and print use it as is. */
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-latin-700-normal.woff2) format("woff2");font-weight:700 900;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-latin-400-italic.woff2) format("woff2");font-weight:400 900;font-style:italic;font-display:swap}
+[data-world="cottage"]{--w:#4F6E4B;--on-w:#FFFFFF;--w-ink:#3E5A3B;--w-soft:#E4EDDC;--w-2:#D89A9E;--w-2-soft:#F6E3E2;--on-w-2:#17181C;
+  --y-canvas:#F7F1E4;--y-sunken:#F0E8D6;--y-hair:#E4D9C2;--y-hair-2:#D6C9AE;
+  --y-display:"Fraunces",Georgia,"Times New Roman",serif}
+.y-body:has(> [data-world="cottage"]){background:#F7F1E4}
+[data-world="cottage"]{background:#F7F1E4}
+/* the Yaykit mark keeps its own face */
+[data-world="cottage"] .y-wordmark,[data-world="cottage"] .y-mark{font-family:"Bricolage Grotesque",ui-rounded,system-ui,sans-serif}
+[data-world="cottage"] .y-title em,[data-world="cottage"] h1 em{font-style:italic;font-weight:700}
