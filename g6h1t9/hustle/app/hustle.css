@@ -1,0 +1,95 @@
+/* Side Hustle Tracker App — money (from Seller Toolkit), mileage (from Mileage Log), tax docs (from Tax Docs), this year. */
+/* Seller Toolkit — result visuals (prefix st-). Layout comes from the kit and the planner engine. */
+.st-visual{display:grid;gap:16px;align-content:start}
+.st-bar{display:flex;height:44px;border:var(--y-border) solid var(--y-ink);border-radius:14px;overflow:hidden;background:var(--y-sunken)}
+.st-seg{display:block;height:100%;min-width:3px;border-right:2px solid var(--y-ink)}
+.st-seg:last-child{border-right:0}
+.st-seg--a{background:#2B2D33}.st-seg--b{background:#70758A}.st-seg--c{background:#BFC3CF}.st-seg--fee{background:#F5A524}.st-seg--keep{background:var(--w)}
+.st-legend{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.st-legend li{display:grid;grid-template-columns:16px minmax(0,1fr) auto 44px;align-items:center;gap:10px;font-weight:600}
+.st-legend li span:last-child{text-align:right;font-size:var(--y-t-sm)}
+.st-dot{display:inline-block;width:14px;height:14px;border:2px solid var(--y-ink);border-radius:5px}
+.st-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.st-facts > div{display:grid;gap:2px;padding:12px 14px;border:var(--y-border) solid var(--y-hair);border-radius:var(--y-r);background:var(--y-surface)}
+.st-facts span{font:700 12.5px/1.2 var(--y-sans);color:var(--y-muted)}
+.st-facts b{font:800 22px/1.15 var(--y-display)}
+.st-facts small{font-size:12.5px;font-weight:600;color:var(--y-muted)}
+.st-note{margin:0;font-size:var(--y-t-sm);font-weight:500;color:var(--y-muted)}
+.st-table{width:100%;border-collapse:collapse;font-weight:600}
+.st-table td{padding:8px 2px;border-bottom:1px solid var(--y-hair)}
+.st-table td:last-child{text-align:right}
+.st-table .st-total td{border-bottom:0;border-top:2px solid var(--y-ink);font-weight:800}
+.st-months,.st-cats{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.st-months li{display:grid;grid-template-columns:84px minmax(0,1fr) auto;align-items:center;gap:12px;font-weight:700}
+.st-month{font-size:var(--y-t-sm);color:var(--y-ink-2)}
+.st-pair{display:grid;gap:3px}
+.st-pair i{display:block;height:12px;min-width:3px;border:2px solid var(--y-ink);border-radius:5px}
+.st-neg{color:var(--y-bad)}
+.st-keyline{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;font-size:var(--y-t-sm);font-weight:600;color:var(--y-muted)}
+.st-keyline span{display:inline-flex;align-items:center;gap:6px}
+.st-cats li{display:grid;grid-template-columns:minmax(0,1fr) minmax(60px,1.2fr) auto;align-items:center;gap:10px;font-weight:600}
+.st-catbar{display:block;height:12px;border-radius:6px;background:var(--y-sunken)}
+.st-catbar i{display:block;height:100%;min-width:3px;border-radius:6px;background:#F5A524;border:2px solid var(--y-ink)}
+@media print{.st-bar,.st-seg,.st-dot,.st-pair i,.st-catbar i{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* Mileage Log — product layout on top of kit + planner engine */
+.ml-tools{gap:12px}
+.ml-month.y-select{width:auto;min-width:180px}
+.ml-trips{display:grid;gap:12px}
+.ml-trip{display:grid;gap:10px;padding:12px 14px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface)}
+.ml-trip-top{display:flex;align-items:center;gap:10px}
+.ml-date.y-input{width:160px;flex:none}
+.ml-purpose.y-input{flex:1;min-width:0;border-color:transparent;font:800 17px var(--y-display)}
+.ml-purpose.y-input:hover{border-color:var(--y-hair)}
+.ml-purpose.y-input:focus{border-color:var(--y-ink)}
+.ml-dist{display:grid;justify-items:end;flex:none;line-height:1.1}
+.ml-dist b{font:800 20px var(--y-display);color:var(--w-ink)}
+.ml-dist small{font-size:12px;font-weight:700;color:var(--y-muted)}
+.ml-trip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.ml-trip-grid .y-input,.ml-trip-grid .y-select{min-height:42px;font-size:14px}
+.ml-roundchk.y-check{flex:none;min-height:42px;padding:4px 12px}
+.ml-months{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;height:190px}
+.ml-m{display:grid;grid-template-rows:1fr auto auto;justify-items:center;gap:2px;font-size:12px}
+.ml-stack{display:flex;flex-direction:column-reverse;justify-content:flex-start;width:100%;max-width:30px;height:100%}
+.ml-stack i{display:block;width:100%}
+.ml-b{background:var(--w)}
+.ml-o{background:var(--w-2)}
+.ml-stack i:first-child{border-radius:0 0 3px 3px}
+.ml-m small{color:var(--y-muted);font-weight:700}
+.ml-key{display:flex;align-items:center;gap:6px}
+.ml-key i{display:inline-block;width:14px;height:14px;border-radius:4px}
+@media (max-width:560px){ .ml-trip-top{flex-wrap:wrap} .ml-date.y-input{width:100%} .ml-purpose.y-input{flex:1 1 60%} }
+
+/* Tax Docs — product layout on top of kit + planner engine */
+.tx-prog{display:grid;gap:8px;padding:16px 18px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r);background:var(--y-surface)}
+.tx-prog-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--y-muted);font-weight:600}
+.tx-prog-top b{font:800 34px/1 var(--y-display);color:var(--y-ink)}
+.tx-prog .y-meter{height:16px}
+.tx-tools{gap:12px}
+.tx-docs{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.tx-doc{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:8px;border:var(--y-border) solid var(--y-hair);border-radius:var(--y-r);background:var(--y-surface)}
+.tx-doc.is-have{background:var(--w-soft);border-color:transparent}
+.tx-doc.is-na{opacity:.7}
+.tx-doc .y-seg{padding:3px}
+.tx-doc .y-seg button{min-height:40px;padding:0 10px;font-size:12.5px}
+.tx-doc-main{display:grid;gap:2px;min-width:0}
+.tx-label.y-textarea{font-weight:700}
+.tx-label:focus,.tx-small.y-input:focus{border-color:var(--y-ink);background:#fff}
+.tx-doc.is-have .tx-label{text-decoration:line-through;text-decoration-color:var(--w-ink)}
+.tx-doc-sub{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:6px}
+.tx-small.y-input{min-height:40px;padding:0 8px;border-color:transparent;background:transparent;font-size:13px;font-weight:500;color:var(--y-ink-2)}
+.tx-small.y-input:hover{border-color:var(--y-hair)}
+@media (max-width:760px){
+  .tx-doc{grid-template-columns:minmax(0,1fr) auto}
+  .tx-doc .y-seg{grid-column:1/-1;grid-row:2;justify-self:start}
+  .tx-doc-sub{grid-template-columns:1fr}
+}
+
+/* this year */
+.sh-q{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sh-q li{display:grid;gap:2px;padding:12px;border:2px solid var(--y-hair);border-radius:14px;background:var(--y-surface)}
+.sh-q li.is-next{border-color:var(--w);background:var(--w-soft)}
+.sh-q li.is-past{opacity:.6}
+.sh-q b{font:800 18px var(--y-display)}
+.sh-q small{font-size:12.5px;font-weight:600;color:var(--y-ink-2)}
+@media (max-width:760px){ .sh-q{grid-template-columns:1fr 1fr} }
