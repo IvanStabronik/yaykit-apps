@@ -1,0 +1,71 @@
+/* Pet Care Planner App — paws world + product layout on top of kit + planner engine */
+[data-world="paws"]{--w:#2F7A4B;--on-w:#FFFFFF;--w-ink:#1F5A35;--w-soft:#DDF1E3;--w-2:#F28C38;--w-2-soft:#FFE9D6;--on-w-2:#17181C}
+.xm-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+.is-over{color:var(--y-bad)!important}
+.pc-chips{margin:0 0 18px}
+.pc-stack{display:grid;gap:22px;align-content:start}
+.xm-people{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:16px;align-items:start;margin-top:12px}
+.xm-person .pl-panel-actions{gap:6px;flex-wrap:wrap}
+
+/* today */
+.pc-slot{margin:14px 0 6px;font:800 13px var(--y-body);letter-spacing:.06em;text-transform:uppercase;color:var(--y-muted)}
+.pc-slot:first-child{margin-top:0}
+.pc-care{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:8px}
+.pc-dues{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pc-due{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;min-height:48px;border-top:1px solid var(--y-hair);padding-top:8px}
+.pc-due:first-child{border-top:0;padding-top:0}
+.pc-due-main{display:grid;gap:2px;min-width:0}
+.pc-due-main b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pc-due-main .pl-muted{font-size:13px}
+.pc-due.is-late b{color:var(--y-bad)}
+
+/* pets + meds */
+.pc-sub{margin:18px 0 6px;font:800 15px var(--y-display)}
+.pc-recs .is-done{opacity:.7}
+.pc-given{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:14px}
+.pc-log{margin:6px 0 0;font-size:13px;color:var(--y-muted)}
+
+/* health */
+.pc-next{font-weight:700;padding:0 6px}
+.pc-ctab .is-late{background:color-mix(in srgb,var(--y-bad) 7%,transparent)}
+
+/* weight */
+.pc-wtop{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.pc-big{margin:0;font:800 34px/1.1 var(--y-display);color:var(--w-ink)}
+.pc-big small{font:600 15px var(--y-body);color:var(--y-muted)}
+.pc-wchange{font-weight:700;text-align:right;font-size:14px}
+.pc-strip{display:flex;align-items:flex-end;gap:6px;height:120px;margin:0 0 14px;padding:8px 10px 0;border-radius:14px;background:var(--w-soft)}
+.pc-strip span{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.pc-strip i{display:block;width:100%;max-width:34px;border-radius:8px 8px 0 0;background:var(--w)}
+.pc-strip small{font-size:10px;color:var(--w-ink);padding:3px 0;white-space:nowrap;overflow:hidden;max-width:100%}
+
+/* money */
+.pc-add{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr) minmax(0,1.4fr) auto;gap:10px;align-items:center}
+.pc-bars{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pc-bars li{display:grid;grid-template-columns:minmax(0,150px) minmax(60px,1fr) 96px;align-items:center;gap:12px;min-height:32px}
+.pc-bars li span{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pc-bars b{text-align:right}
+
+/* sitter */
+.pc-dl{display:grid;gap:8px;margin:0}
+.pc-dl div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;border-top:1px solid var(--y-hair);padding-top:8px}
+.pc-dl div:first-child{border-top:0;padding-top:0}
+.pc-dl dt{color:var(--y-muted);font-size:13px;font-weight:700}.pc-dl dd{margin:0}
+
+@media (max-width:760px){
+  .pc-add{grid-template-columns:1fr 1fr}
+  .pc-add .y-btn{grid-column:1/-1}
+  .pc-dl div{grid-template-columns:1fr;gap:2px}
+  .pc-bars li{grid-template-columns:minmax(0,1fr) 90px}
+  .pc-bars li .y-meter{grid-column:1/-1;grid-row:2}
+}
+@media print{.pc-dl div{grid-template-columns:40mm 1fr}}
+.pc-ctab .y-btn{white-space:nowrap}
+/* phone: a routine item is one compact row — text, when, remove */
+@media (max-width:560px){
+  .pc-rtab .y-table-row{grid-template-columns:minmax(0,1fr) 112px 44px;align-items:center;gap:8px;padding:8px}
+  .pc-rtab .y-table-row > .y-cell-title{grid-column:auto}
+  .pc-rtab .y-table-row > .pl-cell--tools{grid-column:auto;margin-top:0}
+  .pc-rtab [data-label]::before{display:none}
+}
