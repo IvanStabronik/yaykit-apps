@@ -1,0 +1,76 @@
+/* Workout Tracker App — gym world (indigo + lime) and layout on top of kit + planner engine */
+[data-world="gym"]{--w:#3B3FD9;--on-w:#FFFFFF;--w-ink:#2A2DA8;--w-soft:#E3E4FD;--w-2:#B7F34A;--w-2-soft:#F0FCD9;--on-w-2:#17181C}
+.xm-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+
+/* today */
+.wo-units{flex:none}
+.wo-units button{min-width:48px;min-height:44px}
+.wo-starts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:12px}
+.wo-start{display:grid;gap:4px;text-align:left;min-height:88px;padding:16px 18px;border:2px solid var(--y-line);border-radius:18px;background:var(--w);color:var(--on-w);font:inherit;cursor:pointer;box-shadow:4px 4px 0 var(--y-line)}
+.wo-start b{font:800 22px/1.1 var(--y-display)}
+.wo-start span{font-size:13.5px;opacity:.9}
+.wo-start--empty{background:var(--y-surface);color:var(--y-ink)}
+.wo-start:hover{transform:translate(-1px,-1px)}
+.wo-start:focus-visible{outline:3px solid var(--w-2);outline-offset:3px}
+.wo-lastw{margin:0}
+.wo-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:start}
+.wo-main{display:grid;gap:16px;min-width:0}
+.wo-side{display:grid;gap:16px;position:sticky;top:16px}
+.wo-ex .y-kicker{font-size:19px}
+.wo-last{margin:-4px 0 10px;color:var(--y-muted);font-size:13.5px}
+.wo-setn{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--w-soft);color:var(--w-ink);font-weight:800}
+.wo-sets .is-done .wo-setn{background:var(--w);color:var(--on-w)}
+.wo-sets .is-done .y-input{background:var(--w-2-soft)}
+.wo-rest{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.wo-rest .y-btn{min-height:44px}
+@media (max-width:1020px){.wo-grid{grid-template-columns:1fr}.wo-side{position:static}}
+
+/* plans */
+.wo-starter{margin:4px 0 16px}
+.wo-plans .pl-rec-grid:empty{display:none}
+.pl-recs.wo-plans{grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr))}
+
+/* history */
+.wo-hist{display:grid;gap:12px}
+.wo-h-top{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;align-items:center;gap:12px}
+.wo-h-top b{display:block;font:800 18px var(--y-display)}
+.wo-h-top .pl-muted{font-size:13.5px}
+.wo-h-vol{font:800 20px var(--y-display);color:var(--w-ink)}
+.wo-h-vol small{font:600 12px var(--y-sans);color:var(--y-muted)}
+.wo-h-sets{display:grid;gap:6px;margin:12px 0 0;padding-top:10px;border-top:1px solid var(--y-hair)}
+.wo-h-sets div{display:grid;grid-template-columns:minmax(120px,220px) minmax(0,1fr);gap:12px}
+.wo-h-sets dt{font-weight:700}.wo-h-sets dd{margin:0;color:var(--y-ink-2)}
+@media (max-width:640px){.wo-h-top{grid-template-columns:minmax(0,1fr) auto}.wo-h-vol{grid-column:1/-1;order:-1}.wo-h-sets div{grid-template-columns:1fr;gap:2px}}
+
+/* progress */
+.wo-pick{margin:0 0 16px}
+.wo-pick .y-select{max-width:320px;min-height:44px}
+.wo-bars{display:flex;align-items:flex-end;gap:10px;height:220px;padding-top:8px}
+.wo-bar{flex:1 1 0;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px}
+.wo-bar i{display:block;width:100%;max-width:56px;border-radius:10px 10px 4px 4px;background:var(--w);border:2px solid var(--y-line)}
+.wo-bar:last-child i{background:var(--w-2)}
+.wo-bar span{font-size:12.5px;font-weight:700}
+.wo-bar small{font-size:11.5px;color:var(--y-muted);white-space:nowrap}
+@media (max-width:640px){.wo-bars{gap:4px;height:180px}.wo-bar span{font-size:10.5px}.wo-bar small{font-size:9.5px;writing-mode:vertical-rl;transform:rotate(180deg)}}
+
+/* exercises */
+.wo-bar-chips{margin:16px 0 12px}
+
+/* a done set stays readable; the side timer stacks */
+.wo-sets .pl-trow.is-done .y-input{text-decoration:none;color:var(--y-ink)}
+.wo-side .pl-timer{grid-template-columns:1fr}
+.wo-side .pl-timer-btns{justify-content:flex-start}
+/* phone: one compact row per set, with a small header */
+@media (max-width:560px){
+  .wo-sets .y-table-row{grid-template-columns:34px minmax(0,1fr) minmax(0,1fr) 44px 40px 44px!important;column-gap:6px;row-gap:0;align-items:center;padding:4px 0;border:0;background:transparent;box-shadow:none}
+  .wo-sets .y-table-row > .y-cell-title{grid-column:auto}
+  .wo-sets .y-table-head{display:grid;padding-bottom:0}
+  .wo-sets [data-label]{display:block}
+  .wo-sets [data-label]::before{content:none}
+  .wo-sets .y-table-head span{font-size:10.5px}
+  .wo-sets .pl-cell--check{display:flex;justify-content:center}
+  .wo-sets .pl-pill{padding:2px 6px;font-size:11px}
+  .wo-sets.pl-table .y-table-row > .pl-cell--tools{grid-column:auto;margin-top:0}
+}
+@media (max-width:560px){.wo-body .y-table-row > [data-label="Date"]{grid-column:1/-1}}
