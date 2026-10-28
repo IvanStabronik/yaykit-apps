@@ -1,0 +1,93 @@
+/* Student Planner — study world + product layout on top of kit + planner engine */
+[data-world="study"]{--w:#4338CA;--on-w:#FFFFFF;--w-ink:#3128A6;--w-soft:#E4E2FF;--w-2:#5EE0C0;--w-2-soft:#D9FBF1;--on-w-2:#17181C}
+
+/* course colors: fill + text-safe ink on the soft tint */
+.sp-c0{--c:#4338CA;--c-soft:#E4E2FF}.sp-c1{--c:#0E9F7E;--c-soft:#D6F6EC}.sp-c2{--c:#E5533D;--c-soft:#FFE3DD}.sp-c3{--c:#E0A100;--c-soft:#FFF1C9}
+.sp-c4{--c:#1D8FE1;--c-soft:#DCEFFE}.sp-c5{--c:#9B3FC4;--c-soft:#F1E1FA}.sp-c6{--c:#4E9A2E;--c-soft:#E3F3DA}.sp-c7{--c:#D6336C;--c-soft:#FDE0EA}.sp-cx{--c:#8A8A8A;--c-soft:#EFEFEF}
+.sp-dot{display:inline-block;flex:none;width:14px;height:14px;border-radius:50%;background:var(--c);border:2px solid var(--y-ink);vertical-align:middle}
+.sp-chip{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--c-soft);border:2px solid var(--c);color:var(--y-ink);font:800 11.5px/1.5 var(--y-sans);letter-spacing:.02em;white-space:nowrap;vertical-align:1px}
+.sp-of{font-size:.5em;font-weight:700;color:var(--y-ink-2)}
+
+/* today */
+.sp-today{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sp-today li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--c-soft);border-left:6px solid var(--c)}
+.sp-today li.is-past{opacity:.55}
+.sp-today b{display:block;font:800 16px/1.2 var(--y-display)}
+.sp-today small{color:var(--y-ink-2);font-weight:600}
+.sp-time{font-weight:800}
+
+/* schedule */
+.sp-week{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
+.sp-day{display:grid;align-content:start;gap:8px;padding:12px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface)}
+.sp-day.is-today{box-shadow:5px 5px 0 var(--w);border-color:var(--w-ink)}
+.sp-day h3{margin:0 0 2px;font:800 15px var(--y-display);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.sp-class{display:grid;gap:1px;padding:8px 10px;border-radius:12px;background:var(--c-soft);border-left:5px solid var(--c)}
+.sp-class span{font-size:12px;font-weight:700;color:var(--y-ink-2)}
+.sp-class b{font:800 14.5px/1.2 var(--y-display)}
+.sp-class small{font-size:12px;color:var(--y-ink-2)}
+.sp-free{margin:0;color:var(--y-muted);font-weight:700;font-size:13px}
+
+/* assignments */
+.sp-tools{gap:12px;margin:6px 0 12px;flex-wrap:wrap}
+.sp-group{margin-bottom:14px}
+.sp-group.is-late{border-color:#B42318;box-shadow:5px 5px 0 #B42318}
+.sp-task{display:grid;gap:6px}
+.sp-task-meta{display:flex;flex-wrap:wrap;gap:6px}
+.sp-mini.y-select,.sp-mini.y-input{width:auto;min-height:44px;padding:0 10px;border-color:var(--y-hair);font-size:13px;font-weight:700}
+.sp-mini.y-select{padding-right:30px;background-position:right 10px center;max-width:220px}
+
+/* exams + grades */
+.sp-topics{display:grid;gap:10px;margin-top:10px}
+.sp-grade{display:inline-grid;place-items:center;min-width:34px;padding:0 6px;border-radius:8px;background:var(--w);color:var(--on-w);font:800 14px/1.6 var(--y-display)}
+.sp-need{margin:10px 0 0;font-weight:600}
+.sp-scale{margin-top:14px}
+.sp-exam-panel .pl-muted{margin:8px 0 0}
+
+/* study timer */
+.sp-focus{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;align-items:stretch;margin-bottom:22px}
+.sp-on{display:grid;gap:14px;align-content:start;padding:22px 24px}
+.sp-on .y-label{color:var(--on-w);font-size:14px}
+.sp-blocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sp-block{display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 14px;border:var(--y-border) solid var(--y-ink);border-radius:16px;background:var(--y-surface);color:var(--y-ink);text-align:left;cursor:pointer;box-shadow:4px 4px 0 var(--y-ink);transition:transform var(--y-fast)}
+.sp-block:hover{transform:translate(-2px,-2px)}
+.sp-block b{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:12px;background:var(--y-ink);color:var(--y-canvas);font:800 20px var(--y-display)}
+.sp-block span{display:grid;font:800 16px/1.15 var(--y-display)}
+.sp-block small{font:600 12.5px var(--y-sans);color:var(--y-ink-2)}
+.sp-block.is-break b{background:var(--w-2);color:var(--on-w-2)}
+.sp-timer{align-self:stretch;grid-template-columns:1fr;align-content:center;padding:22px 24px}
+.sp-focus .sp-timer .pl-timer-clock{font-size:clamp(56px,7vw,88px)}
+.sp-timer .pl-timer-btns{justify-content:flex-start}
+.sp-bars{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.sp-bars li{display:grid;grid-template-columns:110px minmax(0,1fr) 90px;gap:12px;align-items:center;font-weight:700}
+.sp-bar{height:14px;border-radius:999px;background:var(--y-hair);overflow:hidden}
+.sp-bar i{display:block;height:100%;border-radius:999px;background:var(--c)}
+.sp-bars b{text-align:right}
+
+/* flashcards */
+.sp-stage{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px;align-items:stretch;margin-bottom:22px}
+.sp-card{display:grid;align-content:center;gap:18px;min-height:320px;padding:32px;border:var(--y-border-bold) solid var(--y-ink);border-radius:var(--y-r-xl);background:var(--y-surface);color:var(--y-ink);box-shadow:8px 8px 0 var(--y-ink);text-align:left;cursor:pointer;transition:transform var(--y-mid) var(--y-spring),background-color var(--y-mid)}
+.sp-card:hover{transform:translate(-2px,-2px) rotate(-.4deg)}
+.sp-card.is-flipped{background:var(--w-soft)}
+.sp-card-meta{font:800 12px var(--y-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--w-ink)}
+.sp-q{font:800 clamp(26px,3.2vw,40px)/1.08 var(--y-display);letter-spacing:-.02em}
+.sp-a{font-size:19px;line-height:1.5;font-weight:600;white-space:pre-line}
+.sp-hint{font-weight:700;color:var(--y-muted)}
+.sp-rate{display:grid;gap:8px;align-content:start}
+.sp-rate .y-btn{justify-content:flex-start}
+.sp-nav{gap:8px;margin-top:6px}
+.sp-sheet td{vertical-align:top}
+
+@media (max-width:1020px){
+  .sp-focus,.sp-stage{grid-template-columns:1fr}
+  .sp-card{min-height:240px;padding:22px}
+}
+@media (max-width:640px){
+  .sp-week{grid-template-columns:1fr}
+  .sp-block{min-height:56px;padding:6px 10px;gap:8px}
+  .sp-block b{width:38px;height:38px;font-size:17px}
+  .sp-bars li{grid-template-columns:80px minmax(0,1fr) 74px;gap:8px}
+  .sp-today li{grid-template-columns:64px minmax(0,1fr)}
+}
+@media print{ .sp-day,.sp-group{break-inside:avoid;box-shadow:none} }
+/* courses carry a grade table: give each card room */
+.pl-recs.sp-courses{grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr))}
