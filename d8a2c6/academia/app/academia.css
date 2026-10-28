@@ -1,0 +1,12 @@
+/* Dark Academia skin, part 1 of 2 — the world colors and serif headings on light paper (slides, PDF, print). The dark app theme is academia.dark.css. */
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-latin-700-normal.woff2) format("woff2");font-weight:700 900;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-latin-400-italic.woff2) format("woff2");font-weight:400 900;font-style:italic;font-display:swap}
+[data-world="academia"]{--w:#7A1F2B;--on-w:#FFFFFF;--w-ink:#6E1B27;--w-soft:#F3E3DF;--w-2:#C9A227;--w-2-soft:#F6EED3;--on-w-2:#17181C;
+  --y-display:"Fraunces",Georgia,"Times New Roman",serif}
+/* the Yaykit mark keeps its own face */
+[data-world="academia"] .y-wordmark,[data-world="academia"] .y-mark{font-family:"Bricolage Grotesque",ui-rounded,system-ui,sans-serif}
+[data-world="academia"] .y-title em,[data-world="academia"] h1 em{font-style:italic;font-weight:700}
+/* muted, bookish course colors */
+[data-world="academia"] .sp-c0{--c:#7A1F2B;--c-soft:#F3E3DF}[data-world="academia"] .sp-c1{--c:#2F5D50;--c-soft:#DCEBE5}[data-world="academia"] .sp-c2{--c:#A0522D;--c-soft:#F5E2D6}[data-world="academia"] .sp-c3{--c:#B08A1E;--c-soft:#F6EED3}
+[data-world="academia"] .sp-c4{--c:#2E4A6B;--c-soft:#DEE6F0}[data-world="academia"] .sp-c5{--c:#5B3A5E;--c-soft:#EBE0EC}[data-world="academia"] .sp-c6{--c:#5A6B2E;--c-soft:#E6EBD6}[data-world="academia"] .sp-c7{--c:#8C3B4B;--c-soft:#F4E0E4}

@@ -1,0 +1,46 @@
+/* Dark Academia skin, part 2 of 2 — the dark theme (app only; listing slides and the Start here PDF skip *.dark.css) on top of the Yaykit kit + engine + Student Planner layout.
+   Same approach as the Gothic ADHD Planner: "ink" turns light, so every place the kit paints white text on ink, or a white box under ink text, is flipped below.
+   Print restores the light tokens: paper stays white with dark text. */
+:root{
+  color-scheme:dark;
+  --y-canvas:#15120E;  --y-surface:#1F1A15;  --y-sunken:#191510;
+  --y-ink:#EFE6D6;     --y-ink-2:#DCD0BC;    --y-muted:#B7A98F;   --y-faint:#918470;
+  --y-line:#EFE6D6;    --y-hair:#3A3127;     --y-hair-2:#4B4033;
+  --y-yellow:#4A3B1C;  --y-yellow-soft:#2C2416;
+  --y-good:#8FCFA4;    --y-good-soft:#1C3024;
+  --y-warn:#E9C46A;    --y-warn-soft:#3A2D12;
+  --y-bad:#F2858C;     --y-bad-soft:#3D1A1D;
+  --y-lift-sm:3px 3px 0 #000; --y-lift:4px 4px 0 #000; --y-lift-lg:6px 6px 0 #000;
+}
+[data-world="academia"]{--w:#8E2635;--on-w:#FFFFFF;--w-ink:#E9A9A0;--w-soft:#2E1A1A;--w-2:#C9A227;--w-2-soft:#2A2314;--on-w-2:#15120E}
+/* course colors: same hue, dark tint behind light text */
+[data-world="academia"] .sp-c0{--c:#B23A4A;--c-soft:#2E1A1D}[data-world="academia"] .sp-c1{--c:#4F9A83;--c-soft:#17271F}[data-world="academia"] .sp-c2{--c:#C8743F;--c-soft:#2E1F15}[data-world="academia"] .sp-c3{--c:#C9A227;--c-soft:#2A2314}
+[data-world="academia"] .sp-c4{--c:#5C86B5;--c-soft:#18212D}[data-world="academia"] .sp-c5{--c:#9A6BA0;--c-soft:#251B27}[data-world="academia"] .sp-c6{--c:#8FA352;--c-soft:#20261A}[data-world="academia"] .sp-c7{--c:#C2607A;--c-soft:#2C1820}[data-world="academia"] .sp-cx{--c:#8A8070;--c-soft:#221E19}
+.sp-chip{color:var(--y-ink)}
+
+/* white text on an ink fill -> dark text on the light fill */
+.y-seg button[aria-selected="true"],.y-seg button.is-active,.y-badge,.y-toast,.y-timer,.y-choice.is-correct .y-choice-key,
+.pl-tab-badge,.pl-pill--ink,.y-btn:not(.y-btn--world):not(.y-btn--accent):not(.y-btn--secondary):not(.y-btn--ghost):not(.y-btn--danger){color:var(--y-canvas)}
+.pl-undo-btn{border-color:var(--y-canvas);color:var(--y-canvas)}
+/* white boxes under ink text -> dark surfaces */
+.y-box,.y-meter,.y-reward-icon,.y-choice-key,.y-team,.pl-ci-input:focus,.pl-title-input.y-input:focus{background:var(--y-surface)}
+.y-meter{background:var(--y-sunken)}
+.y-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23EFE6D6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator{filter:invert(1)}
+
+/* candlelight in the corners of the library */
+.y-app{background:radial-gradient(900px 420px at 100% -10%,var(--w-soft),transparent 70%),radial-gradient(700px 360px at -10% 110%,var(--w-2-soft),transparent 70%),var(--y-canvas)}
+.y-mark{background:var(--w-2);color:var(--on-w-2)}
+
+@media print{
+  :root{
+    color-scheme:light;
+    --y-canvas:#FFF9F2; --y-surface:#FFFFFF; --y-sunken:#FBF3E8;
+    --y-ink:#17181C; --y-ink-2:#34363D; --y-muted:#5E616B; --y-faint:#8B8E97;
+    --y-line:#17181C; --y-hair:#EADFD1; --y-hair-2:#DCCFBE;
+    --y-yellow:#FFD65C; --y-yellow-soft:#FFF3C7;
+    --y-good:#0B7A54; --y-good-soft:#D5F5E6; --y-warn:#8A5A00; --y-warn-soft:#FFF0C9; --y-bad:#B3261E; --y-bad-soft:#FDE3E0;
+  }
+  [data-world="academia"]{--w:#7A1F2B;--on-w:#FFFFFF;--w-ink:#7A1F2B;--w-soft:#F3E3DF;--w-2:#C9A227;--w-2-soft:#F6EED3;--on-w-2:#17181C}
+  .y-app{background:#fff!important}
+}
