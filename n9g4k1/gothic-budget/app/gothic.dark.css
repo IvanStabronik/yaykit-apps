@@ -1,0 +1,43 @@
+/* Gothic skin, part 2 of 2 — the dark theme (app only; listing slides and the Start here PDF skip *.dark.css) on top of the Yaykit kit + engine + ADHD Planner layout.
+   The kit is built for light paper: "ink" is both text and the dark fill under white text. Here ink turns light,
+   so every place the kit paints white text on ink, or a white box under ink text, is flipped below.
+   Print restores the light tokens: paper stays white with dark text. */
+:root{
+  color-scheme:dark;
+  --y-canvas:#141017;  --y-surface:#1E1922;  --y-sunken:#18131B;
+  --y-ink:#F1EAF4;     --y-ink-2:#DDD3E2;    --y-muted:#B9AEC0;   --y-faint:#958B9D;
+  --y-line:#F1EAF4;    --y-hair:#3A3140;     --y-hair-2:#4A3F51;
+  --y-yellow:#3B2A4A;  --y-yellow-soft:#2A2033;
+  --y-good:#6FD3A8;    --y-good-soft:#173328;
+  --y-warn:#F0C06A;    --y-warn-soft:#3A2C12;
+  --y-bad:#FF7F8C;     --y-bad-soft:#3D1820;
+  --y-lift-sm:3px 3px 0 #000; --y-lift:4px 4px 0 #000; --y-lift-lg:6px 6px 0 #000;
+}
+[data-world="gothic"]{--w:#9B1B45;--on-w:#FFFFFF;--w-ink:#F59BBB;--w-soft:#2E1622;--w-2:#BFA3E6;--w-2-soft:#251C30;--on-w-2:#141017}
+
+/* white text on an ink fill -> dark text on the light fill */
+.y-seg button[aria-selected="true"],.y-seg button.is-active,.y-badge,.y-toast,.y-timer,.y-choice.is-correct .y-choice-key,
+.pl-tab-badge,.pl-pill--ink,.y-btn:not(.y-btn--world):not(.y-btn--accent):not(.y-btn--secondary):not(.y-btn--ghost):not(.y-btn--danger){color:var(--y-canvas)}
+.pl-undo-btn{border-color:var(--y-canvas);color:var(--y-canvas)}
+/* white boxes under ink text -> dark surfaces */
+.y-box,.y-meter,.y-reward-icon,.y-choice-key,.y-team,.pl-ci-input:focus,.pl-title-input.y-input:focus{background:var(--y-surface)}
+.y-meter{background:var(--y-sunken)}
+.y-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23F1EAF4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator{filter:invert(1)}
+
+/* a little night sky behind the app */
+.y-app{background:radial-gradient(900px 420px at 100% -10%,var(--w-soft),transparent 70%),radial-gradient(700px 360px at -10% 110%,var(--w-2-soft),transparent 70%),var(--y-canvas)}
+.y-mark{background:var(--w);color:var(--on-w)}
+
+@media print{
+  :root{
+    color-scheme:light;
+    --y-canvas:#FFF9F2; --y-surface:#FFFFFF; --y-sunken:#FBF3E8;
+    --y-ink:#17181C; --y-ink-2:#34363D; --y-muted:#5E616B; --y-faint:#8B8E97;
+    --y-line:#17181C; --y-hair:#EADFD1; --y-hair-2:#DCCFBE;
+    --y-yellow:#FFD65C; --y-yellow-soft:#FFF3C7;
+    --y-good:#0B7A54; --y-good-soft:#D5F5E6; --y-warn:#8A5A00; --y-warn-soft:#FFF0C9; --y-bad:#B3261E; --y-bad-soft:#FDE3E0;
+  }
+  [data-world="gothic"]{--w:#9B1B45;--on-w:#FFFFFF;--w-ink:#9B1B45;--w-soft:#F6E3EA;--w-2:#BFA3E6;--w-2-soft:#F1EAFB;--on-w-2:#17181C}
+  .y-app{background:#fff!important}
+}
