@@ -1,0 +1,33 @@
+/* Bachelorette Weekend App — itinerary, bookings, split, packing (from Bachelorette Weekend), crew and the bride quiz. */
+/* Bachelorette Weekend — product layout on top of kit + planner engine */
+.bw-of{font:700 15px var(--y-sans);color:var(--y-muted)}
+.bw-days{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:16px;align-items:start}
+.bw-day{display:grid;gap:12px;padding:16px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface);box-shadow:var(--y-lift-sm)}
+.bw-day header{display:flex;align-items:baseline;gap:10px}
+.bw-day h3{margin:0;font:800 22px var(--y-display)}
+.bw-plans{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.bw-plan{display:grid;grid-template-columns:112px minmax(0,1fr);gap:4px 8px;padding:10px;border:var(--y-border) dashed var(--y-hair-2);border-radius:var(--y-r)}
+.bw-plan.is-booked{border-style:solid;border-color:var(--w);background:var(--w-soft)}
+.bw-plan-time .y-input{min-height:42px;padding:0 8px;font-weight:800;font-size:14px}
+.bw-plan-main{display:contents}
+.bw-plan-main .bw-where{grid-column:1/-1}
+.bw-what.y-input{min-height:42px;font-weight:700}
+.bw-where.y-input{min-height:40px;border-width:0 0 2px;border-radius:0;border-color:var(--y-hair-2);background:transparent;padding:0 2px;font-size:13.5px;font-weight:500}
+.bw-where.y-input:focus{border-color:var(--y-ink);box-shadow:none}
+.bw-plan-side{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.bw-booked.y-check{min-height:40px;padding:4px 10px;background:transparent}
+.bw-booked.y-check:has(input:checked){background:var(--y-surface);border-color:var(--w)}
+.bw-booked.y-check:has(input:checked) .y-check-text{text-decoration:none;color:var(--w-ink);font-weight:800}
+.bw-money-top{align-items:flex-end;gap:16px;margin-bottom:16px}
+.bw-money-top .y-field{width:180px}
+.bw-split{margin-top:18px}
+.bw-bags{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px;align-items:start}
+.bw-bag-add{margin-top:10px}
+@media (max-width:560px){ .bw-plan{grid-template-columns:104px minmax(0,1fr)} }
+
+/* crew + quiz */
+.bw-crew{--pl-rec:320px}
+.bw-quiz-sheet ol li{margin-bottom:6mm}
+.bw-quiz-sheet .bw-line{display:block;border-bottom:1px solid #999;height:7mm}
+/* yes/no fields on a person are facts, not done tasks: no strike-through */
+.bw-crew .y-check:has(input:checked) .y-check-text{text-decoration:none;color:var(--y-ink);font-weight:700}
