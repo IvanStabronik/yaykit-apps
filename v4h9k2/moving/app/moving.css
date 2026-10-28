@@ -1,0 +1,43 @@
+/* Moving Planner App — moving (from Moving Planner) and home comparison (from House Hunt). */
+/* Moving Planner — product layout on top of kit + planner engine */
+.mv-prog{display:inline-block;width:160px}
+.mv-now-lead{margin:0 0 12px;font-weight:600}
+.mv-stages{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px;align-items:start}
+.mv-stage.is-now{border-color:var(--y-ink);box-shadow:var(--y-lift);background:linear-gradient(var(--w-soft),var(--y-surface) 80px)}
+.mv-stage.is-late{border-color:var(--y-bad)}
+.mv-gap{height:12px}
+/* printable box labels: 2 x 3 per page */
+.mv-labels{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.mv-label{display:grid;grid-template-columns:auto 1fr;gap:5mm;align-items:start;min-height:78mm;padding:7mm;border:.6mm solid #1b1b1b;border-radius:3mm;break-inside:avoid}
+.mv-label-n{font:800 46pt/1 var(--y-display)}
+.mv-label b{display:block;font:800 18pt/1.1 var(--y-display);letter-spacing:.02em}
+.mv-label-f{display:inline-block;margin-top:2mm;padding:1mm 3mm;border:.5mm solid #1b1b1b;font:800 10pt var(--y-sans);letter-spacing:.12em}
+.mv-label p{margin:3mm 0 0!important;font-size:13pt;line-height:1.35}
+
+/* House Hunt — product layout on top of kit + planner engine */
+.hh-of{font:700 15px var(--y-sans);color:var(--y-muted)}
+.hh-tools{gap:12px}
+.hh-hunt.y-input{width:min(100%,320px)}
+.hh-homes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,370px),1fr));gap:18px;align-items:start}
+.hh-home{display:grid;gap:14px;padding:16px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface)}
+.hh-home.is-top{box-shadow:var(--y-lift-lg);background:linear-gradient(var(--w-soft),var(--y-surface) 150px)}
+.hh-home.is-passed{opacity:.6}
+.hh-home-head{display:flex;align-items:flex-start;gap:8px}
+.hh-rank{display:grid;place-items:center;flex:none;min-width:44px;height:44px;padding:0 6px;border:var(--y-border) solid var(--y-ink);border-radius:12px;background:var(--w-2);color:var(--on-w-2);font:800 18px var(--y-display);transform:rotate(-4deg)}
+.hh-home.is-top .hh-rank{background:var(--w);color:var(--on-w)}
+.hh-addr.y-input{min-height:40px;margin-left:-8px;padding:0 8px;border-color:transparent;background:transparent;font-size:13.5px;font-weight:500;color:var(--y-muted)}
+.hh-addr.y-input:focus{border-color:var(--y-ink);background:#fff}
+.hh-score{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:6px 8px}
+.hh-score b{font:800 34px/1 var(--y-display)}
+.hh-score > span:not(.y-meter):not(.pl-muted){font-weight:700;color:var(--y-muted)}
+.hh-score .y-meter{height:14px}
+.hh-money{display:grid;gap:2px;padding:10px 12px;border-radius:12px;background:var(--y-sunken);font-size:13.5px}
+.hh-money b{font:800 20px var(--y-display)}
+.hh-ratings{display:grid;gap:0}
+.hh-rate{display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--y-hair)}
+.hh-rate > span{font-weight:700;font-size:14px}
+.hh-rate .pl-star{width:40px;height:40px}
+.hh-rate .pl-star .y-icon{width:21px;height:21px}
+.hh-sheet th{width:26mm;vertical-align:top}
+.hh-sheet td{vertical-align:top}
+
