@@ -1,0 +1,79 @@
+/* Teacher Planner App — chalk world (chalkboard green + apple red) and product layout on top of kit + planner engine */
+[data-world="chalk"]{--w:#2E6B4F;--on-w:#FFFFFF;--w-ink:#22523C;--w-soft:#DDEFE5;--w-2:#C0392B;--w-2-soft:#FBE3E0;--on-w-2:#FFFFFF}
+.xm-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+.te-bar{margin:4px 0 18px}
+.te-tools{margin:0 0 16px;gap:10px}
+.te-nav{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.te-nav .y-num{font-weight:800}
+
+/* today */
+.te-day{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.te-day li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;padding:12px 14px;border-radius:14px;background:var(--w-soft)}
+.te-time{display:grid;gap:2px;font-size:13px;color:var(--y-muted)}
+.te-time b{font:800 15px var(--y-display);color:var(--w-ink)}
+.te-cls{font-weight:800}
+.te-obj{margin:4px 0 0}
+.te-hw{margin:4px 0 0;font-size:13px}
+.te-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.te-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;border-top:1px solid var(--y-hair);padding-top:8px}
+.te-list li:first-child{border-top:0;padding-top:0}
+.te-code{font-size:12px;font-weight:800;padding:2px 8px;border-radius:99px}
+.te-A{background:var(--w-2-soft);color:#8E2A1F}.te-L{background:var(--y-warn-soft);color:var(--y-warn)}.te-E{background:#E6E8F5;color:#36408C}
+
+/* lessons */
+.te-week{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:16px;align-items:start}
+.te-lday{border:2px solid var(--y-line);border-radius:18px;background:var(--y-surface);padding:16px;display:grid;gap:12px}
+.te-lday h3{margin:0;font:800 18px var(--y-display)}
+.te-lp{display:grid;gap:10px;padding:12px;border-radius:14px;background:var(--w-soft)}
+.te-lp-time{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--w-ink)}
+
+/* classes */
+.te-scroll{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px 6px}
+.te-tt{border-collapse:separate;border-spacing:6px;min-width:860px;width:100%}
+.te-tt th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--y-muted);text-align:left;padding:0 2px}
+.te-tt td{vertical-align:middle}
+.te-tt .y-input,.te-tt .y-select{width:100%;min-width:0}
+.te-tt td:first-child{min-width:110px}
+
+/* attendance */
+.te-date{min-width:200px}
+.te-att{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:10px}
+.te-mark{width:100%;min-height:56px;display:grid;grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;align-items:center;text-align:left;padding:8px 12px;border:2px solid var(--y-line);border-radius:14px;background:var(--y-surface);color:var(--y-ink);font:inherit;cursor:pointer}
+.te-mark:focus-visible{outline:3px solid var(--w);outline-offset:2px}
+.te-mark-code{grid-row:1/3;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font:800 18px var(--y-display);background:var(--w-soft);color:var(--w-ink)}
+.te-mark-name{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.te-mark-sum{font-size:12px;color:var(--y-muted);min-height:1em}
+.te-mark.te-A{background:var(--w-2-soft)}.te-mark.te-A .te-mark-code{background:var(--w-2);color:#fff}
+.te-mark.te-L{background:var(--y-warn-soft)}.te-mark.te-L .te-mark-code{background:#8A5A00;color:#fff}
+.te-mark.te-E{background:#E6E8F5}.te-mark.te-E .te-mark-code{background:#36408C;color:#fff}
+
+/* grades */
+.te-grid{border-collapse:separate;border-spacing:0;min-width:100%}
+.te-grid th,.te-grid td{padding:4px 6px;border-bottom:1px solid var(--y-hair);text-align:left;white-space:nowrap}
+.te-grid thead th{font-size:12px;vertical-align:bottom}
+.te-an{display:block;max-width:120px;overflow:hidden;text-overflow:ellipsis;font-weight:800}
+.te-sticky{position:sticky;left:0;background:var(--y-surface);z-index:1;font-weight:800;min-width:110px}
+.te-score{width:64px;min-width:64px;text-align:center}
+.te-avg{font-weight:800;min-width:72px}
+.te-lg{display:inline-grid;place-items:center;min-width:36px;height:30px;padding:0 6px;border-radius:10px;font:800 15px var(--y-display);background:var(--w-soft);color:var(--w-ink)}
+.te-lg-D,.te-lg-F{background:var(--w-2-soft);color:#8E2A1F}
+
+/* seating */
+.te-rc{display:flex;gap:10px}.te-rc .y-field{width:130px}
+.te-front{margin:0 0 10px;text-align:center;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--y-muted);border-bottom:3px solid var(--w);padding-bottom:6px}
+.te-seats{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:10px}
+.te-seat{min-height:64px;border:2px dashed var(--y-hair-2);border-radius:14px;background:var(--y-sunken);font:700 14px var(--y-sans);color:var(--y-ink);padding:6px;cursor:pointer;overflow:hidden;text-overflow:ellipsis}
+.te-seat.is-full{border:2px solid var(--y-line);background:var(--y-surface)}
+.te-seat.is-sel{outline:3px solid var(--w-2);outline-offset:2px;background:var(--w-2-soft)}
+.te-seat:focus-visible{outline:3px solid var(--w);outline-offset:2px}
+.te-pick{margin-top:16px;padding:14px;border-radius:14px;background:var(--w-soft)}
+.te-pick p{margin:0 0 10px}
+.te-pick-list{display:flex;flex-wrap:wrap;gap:8px}
+.te-pick-list .pl-chip{min-height:44px}
+
+@media (max-width:640px){
+  .te-day li{grid-template-columns:1fr;gap:6px}
+  .te-seats{gap:6px}.te-seat{min-height:56px;font-size:12px}
+}
+@media print{.te-seat{border-style:solid}}
