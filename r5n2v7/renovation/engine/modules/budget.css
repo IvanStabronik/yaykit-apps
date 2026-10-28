@@ -1,0 +1,26 @@
+/* Yaykit planner module: budget vs actual */
+.bu-overall{margin-top:12px}
+.bu-overall .y-meter{height:16px}
+.bu-pay li{grid-template-columns:30px 1fr auto}
+.bu-bars{display:grid;gap:10px}
+.bu-bar{display:grid;grid-template-columns:minmax(120px,200px) minmax(0,1fr) 190px;align-items:center;gap:14px}
+.bu-bar-name{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bu-bar-track{position:relative;height:18px;border-radius:99px;background:var(--y-sunken)}
+.bu-bar-track i{position:absolute;left:0;top:0;bottom:0;border-radius:99px}
+.bu-bar-budget{background:var(--w-soft);border:2px solid var(--w-ink)}
+.bu-bar-actual{top:5px!important;bottom:5px!important;margin-left:5px;max-width:calc(100% - 10px);background:var(--w-ink)}
+.bu-bar.is-over .bu-bar-actual{background:var(--y-bad)}
+.bu-bar-num{text-align:right;font-weight:800;font-size:14px}
+.bu-key{display:flex;align-items:center;gap:6px;margin-top:12px}
+.bu-key i{display:inline-block;width:22px;height:10px;border-radius:99px}
+.bu-k1{background:var(--w-ink)}.bu-k2{background:var(--w-soft);border:2px solid var(--w-ink)}
+.bu-left{display:grid;gap:4px;font-weight:800;font-size:14px}
+.bu-left .is-over{color:var(--y-bad)}
+.bu-left .y-meter{height:10px}
+.bu-left .pl-hint{font-size:12px;font-weight:600}
+.bu-cat-foot{margin-top:14px}
+.bu-vendors{--pl-rec:360px;margin-top:4px}
+@media (max-width:560px){
+  .bu-bar{grid-template-columns:1fr auto;gap:6px 10px}
+  .bu-bar-track{grid-column:1/-1;grid-row:2}
+}
