@@ -1,0 +1,67 @@
+/* Garden Planner App — garden world (leaf green + tomato red) and the calendar, crop table, beds, seeds and journal layout */
+[data-world="garden"]{--w:#2F7D32;--on-w:#FFFFFF;--w-ink:#215A24;--w-soft:#DFF0DA;--w-2:#B93A22;--w-2-soft:#FBE1DA;--on-w-2:#FFFFFF}
+.xm-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+/* family colors (pastel, dark text) */
+.gp-f0{--fc:#F7B9A8}.gp-f1{--fc:#B9D9F2}.gp-f2{--fc:#C9E7B4}.gp-f3{--fc:#F8DC8C}.gp-f4{--fc:#E3C8F0}.gp-f5{--fc:#FFD0A6}
+.gp-f6{--fc:#F3B7CF}.gp-f7{--fc:#BFE8E0}.gp-f8{--fc:#D3E8A8}.gp-f9{--fc:#EADBB0}.gp-f10{--fc:#D9D1F5}.gp-f11{--fc:#DDD8CF}
+.gp-dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--fc);border:1.5px solid var(--y-ink);flex:none}
+/* calendar */
+.gp-next{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.gp-next li{display:grid;grid-template-columns:72px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:40px;border-top:1px solid var(--y-hair);padding-top:8px}
+.gp-next li:first-child{border-top:0;padding-top:0}
+.gp-ndate{font-weight:800;color:var(--w-ink)}
+.gp-time{display:grid;gap:6px}
+.gp-months,.gp-trow{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;align-items:center}
+.gp-months{grid-template-columns:130px repeat(12,1fr);gap:0;font-size:12px;font-weight:700;color:var(--y-muted)}
+.gp-months span:first-child{grid-column:2}
+.gp-tname{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gp-track{position:relative;height:18px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--y-sunken) 0 calc(100%/12 - 1px),var(--y-hair) calc(100%/12 - 1px) calc(100%/12))}
+.gp-bar{position:absolute;top:2px;bottom:2px;border-radius:5px}
+.gp-b-in{background:#F8DC8C}.gp-b-grow{background:var(--w)}.gp-b-har{background:var(--w-2)}
+.gp-frost{position:absolute;top:-3px;bottom:-3px;width:2px;background:#2E5E9E}
+.gp-key{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 0;font-size:13px;font-weight:600}
+.gp-key span{display:inline-flex;align-items:center;gap:6px}
+.gp-key i{display:inline-block;width:18px;height:10px;border-radius:3px}
+.gp-key .gp-frostkey{width:3px;height:14px;background:#2E5E9E;border-radius:0}
+.gp-dates{display:grid;gap:6px}
+.gp-drow{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(4,minmax(0,1fr));gap:10px;align-items:center;min-height:40px;padding:6px 10px;border-radius:12px;background:var(--y-sunken)}
+.gp-dhead{background:transparent;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--y-muted);min-height:0}
+.gp-dname{display:flex;align-items:center;gap:8px;font-weight:800}
+.gp-d{font-weight:700}
+/* crops */
+.gp-ctools{margin-bottom:12px}
+.gp-ctab .is-plan{background:var(--w-soft)}
+/* beds */
+.gp-pick{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.gp-pchip{background:var(--fc)!important;color:#17181C!important}
+.gp-pchip.is-on{outline:3px solid var(--y-ink);outline-offset:1px}
+.gp-beds{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:16px;align-items:start}
+.gp-bed .pl-panel-actions{gap:8px}
+.gp-bfields{grid-template-columns:minmax(0,1.3fr) 78px 78px minmax(128px,1fr);margin-bottom:12px}
+.gp-gridwrap{overflow-x:auto;padding:2px 2px 6px}
+.gp-grid{display:grid;grid-template-columns:repeat(var(--cols),44px);gap:4px;width:max-content;padding:8px;border-radius:12px;background:#8B6B4A}
+.gp-cell{width:44px;height:44px;padding:0;border:1.5px solid rgba(0,0,0,.25);border-radius:6px;background:#C9A57C;font:800 11px var(--y-sans);color:#17181C;cursor:pointer}
+.gp-plus{color:rgba(23,24,28,.45);font-size:16px}
+.gp-cell.is-set{background:var(--fc);border-color:var(--y-ink)}
+.gp-cell:focus-visible{outline:3px solid #FFFFFF;outline-offset:1px}
+.gp-bsum{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}
+.gp-bsum li{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px}
+.gp-hist{display:grid;gap:6px;margin-top:14px;padding-top:12px;border-top:1px solid var(--y-hair)}
+.gp-hchips{display:flex;flex-wrap:wrap;gap:6px}
+/* journal */
+.gp-years{margin-bottom:14px}
+.gp-jform{display:grid;grid-template-columns:150px minmax(0,1fr) 150px 90px minmax(0,1.2fr) auto;gap:10px;align-items:center}
+.gp-tot{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.gp-tot li{display:grid;grid-template-columns:130px minmax(0,1fr) 72px;gap:10px;align-items:center}
+.gp-ttrack{height:14px;border-radius:99px;background:var(--y-sunken);overflow:hidden}
+.gp-ttrack i{display:block;height:100%;background:var(--w-2)}
+.gp-tlb{text-align:right}
+@media (max-width:900px){.gp-jform{grid-template-columns:1fr 1fr}.gp-jform > :nth-child(n+5){grid-column:1/-1}}
+@media (max-width:640px){
+  .gp-months,.gp-trow{grid-template-columns:84px minmax(0,1fr)}.gp-months{grid-template-columns:84px repeat(12,1fr);font-size:10px}
+  .gp-dhead{display:none}.gp-drow{grid-template-columns:1fr 1fr;gap:6px 10px;padding:10px 12px}
+  .gp-drow .gp-dname{grid-column:1/-1}.gp-drow [data-label]::before{content:attr(data-label);display:block;font-size:11px;font-weight:700;color:var(--y-muted)}
+  .gp-bfields{grid-template-columns:1fr 1fr}.gp-bfields > :first-child{grid-column:1/-1}
+  .gp-next li{grid-template-columns:64px minmax(0,1fr)}.gp-next li > :last-child{grid-column:2}
+}
