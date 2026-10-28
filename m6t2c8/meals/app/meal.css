@@ -1,0 +1,85 @@
+/* Meal Planner — week grid (from Meal + Grocery) and recipe cards (from Recipe Box) on top of kit + planner engine */
+/* Meal + Grocery — product layout on top of kit + planner engine */
+.mg-nav{display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap}
+.mg-nav-btn{border:var(--y-border) solid var(--y-hair)}
+.mg-weeklabel{padding:0 8px;font-weight:800;color:var(--y-ink)}
+.mg-focus{padding:18px 24px}
+.mg-focus .y-kicker{margin-bottom:6px}
+.mg-focus .y-input--big{font-size:clamp(22px,2.6vw,32px);min-height:50px}
+.mg-focus .y-input--big::placeholder{color:var(--on-w)}
+.mg-of{font:700 15px var(--y-sans);color:var(--y-muted)}
+.mg-link{display:inline-flex;align-items:center;margin:-10px 0 -12px;padding:0;min-height:40px;border:0;background:none;color:var(--w-ink);font:700 12.5px var(--y-sans);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.mg-tools{gap:16px}
+.mg-days{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px}
+.mg-day{display:grid;gap:10px;align-content:start;padding:14px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface)}
+.mg-day.is-today{box-shadow:var(--y-lift);background:linear-gradient(var(--w-soft),var(--y-surface) 90px)}
+.mg-day h3{display:flex;align-items:center;gap:8px;margin:0 0 2px;font:800 19px var(--y-display)}
+.mg-day h3 > span:not(.pl-pill){font:600 13px var(--y-sans);color:var(--y-muted)}
+.mg-slot{display:grid;gap:4px;padding-top:10px;border-top:var(--y-border) dashed var(--y-hair)}
+.mg-slot:first-of-type{border-top:0;padding-top:0}
+.mg-slot-label{font:800 11.5px var(--y-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--y-muted)}
+.mg-slot.is-set .mg-slot-label{color:var(--w-ink)}
+.mg-slot-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mg-dish.y-input{min-height:42px;font-weight:700}
+.mg-effort.y-select{width:auto;min-height:40px;padding:0 28px 0 10px;border-color:var(--y-hair);font-size:12.5px;font-weight:700;background-position:right 10px center}
+.mg-items.y-input{min-height:40px;border-width:0 0 2px;border-radius:0;border-color:var(--y-hair-2);padding:0 2px;font-size:13.5px;font-weight:500}
+.mg-items.y-input:focus{border-color:var(--y-ink);box-shadow:none}
+
+/* grocery */
+.mg-gtools{margin-bottom:10px}
+.mg-aisle-group{margin-top:16px}
+.mg-aisle-group h3{margin:0 0 8px;font:800 16px var(--y-display)}
+.mg-aisle-group h3 span{font:600 13px var(--y-sans)}
+.mg-g{align-items:center}
+.mg-g .pl-ci-text{padding:4px 8px 0}
+.mg-aisle.y-select{width:150px;min-height:40px;padding:0 28px 0 10px;border-color:var(--y-hair);font-size:13px;background-position:right 10px center}
+.mg-extra{margin-top:18px}
+
+@media (max-width:560px){
+  .mg-aisle.y-select{display:none}
+}
+@media print{
+  .mg-nav,.mg-tools,.mg-gtools,.mg-extra,.mg-link{display:none!important}
+  .mg-aisle.y-select{display:none}
+  .mg-days{grid-template-columns:1fr 1fr}
+}
+
+/* Recipe Box — product layout on top of kit + planner engine */
+.rb-tools{gap:12px}
+.rb-search{position:relative;width:min(100%,320px)}
+.rb-search > .y-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--y-muted)}
+.rb-search .y-input{padding-left:38px}
+.rb-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px}
+.rb-card{position:relative;display:grid;gap:8px;align-content:start;padding:16px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface);background-image:repeating-linear-gradient(transparent 0 27px,var(--y-hair) 27px 28px);background-position:0 70px;box-shadow:var(--y-lift-sm)}
+.rb-card.is-open{outline:4px solid var(--w);outline-offset:2px}
+.rb-card h3{margin:0;padding-right:44px;font:800 20px/1.15 var(--y-display)}
+.rb-meta{margin:0;font-size:13px;color:var(--y-muted);font-weight:600}
+.rb-tags{display:flex;flex-wrap:wrap;gap:6px}
+.rb-card-btns{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
+.rb-fav{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:12px;background:transparent;color:var(--y-muted);cursor:pointer}
+.rb-fav.is-on{color:var(--y-bad)}
+.rb-fav.is-on .y-icon{fill:currentColor}
+.rb-editor{scroll-margin-top:16px}
+.rb-sub{margin:18px 0 10px;font:800 16px var(--y-display)}
+.rb-steps{margin-top:14px}
+.rb-steps .y-textarea{line-height:1.6}
+.rb-plan{display:grid;gap:8px;margin:0 0 14px;padding:0;list-style:none}
+.rb-plan li{display:flex;align-items:center;gap:12px;padding:6px 6px 6px 14px;border:var(--y-border) solid var(--y-hair);border-radius:var(--y-r)}
+.rb-plan li b{flex:1}
+.rb-mult{display:inline-flex;align-items:center;gap:4px;font-weight:800}
+.rb-mult .y-select{width:84px;min-height:40px}
+.rb-pick{max-width:420px;margin-bottom:14px}
+.rb-gtools{margin-bottom:6px}
+.rb-aisle{margin-top:14px}
+.rb-aisle h3{margin:0 0 8px;font:800 16px var(--y-display)}
+.rb-aisle .pl-ci{align-items:center}
+.rb-aisle .pl-ci-text{padding:4px 8px 0}
+.rb-print-cols{display:grid;grid-template-columns:1fr 1.5fr;gap:8mm}
+.rb-print ul,.rb-print ol{margin:0;padding-left:5mm;font-size:11pt;line-height:1.6}
+@media (max-width:560px){ .rb-search{width:100%} .rb-plan li{flex-wrap:wrap} }
+/* recipe link in a meal slot */
+.mg-slot.is-recipe .mg-dish{border-color:var(--w);font-weight:800}
+.mg-rec{display:inline-flex;align-items:center;gap:3px;margin-left:auto;font:800 11px var(--y-sans);letter-spacing:.04em;text-transform:uppercase;color:var(--w-ink)}
+.mg-rec .y-icon{width:12px;height:12px}
+.mg-mult.y-select{width:auto;min-height:44px;padding:0 28px 0 10px;border-color:var(--y-hair);font-size:13px;font-weight:800;background-position:right 8px center}
+.mg-slot-top{min-height:44px}
