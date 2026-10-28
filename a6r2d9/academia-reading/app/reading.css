@@ -1,0 +1,54 @@
+/* Reading Journal App — reading world + shelf/library/year (from Reading Log) and journal, quotes, challenge, club */
+[data-world="bookish"]{--w:#8C3B5E;--on-w:#FFFFFF;--w-ink:#6E2B48;--w-soft:#F6E1EA;--w-2:#F2B544;--w-2-soft:#FDF0D2;--on-w-2:#17181C}
+.rl-goal{display:grid;gap:10px}
+.rl-goal-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:800 18px var(--y-display)}
+.rl-goal-input.y-input{width:90px;border-color:var(--y-ink);font:800 20px var(--y-display);text-align:center}
+.rl-goal .y-meter{height:16px}
+.rl-goal-note{margin:0;font-weight:600}
+.rl-now{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:14px}
+.rl-book{display:grid;grid-template-columns:78px 1fr;gap:14px;padding:12px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r);background:var(--y-surface)}
+.rl-cover{display:grid;place-items:center;height:110px;border:var(--y-border) solid var(--y-ink);border-radius:6px 12px 12px 6px;background:hsl(var(--h) 70% 82%);box-shadow:inset 8px 0 0 rgba(0,0,0,.12);font:800 34px var(--y-display)}
+.rl-book-main{display:grid;gap:6px;align-content:start;min-width:0}
+.rl-book-main b{font:800 18px/1.2 var(--y-display)}
+.rl-prog{display:flex;align-items:center;gap:8px;font-size:13.5px}
+.rl-page.y-input{width:84px;min-height:40px;padding:0 8px}
+.rl-list{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.rl-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:4px 4px 4px 12px;border-radius:12px;background:var(--y-sunken);font-size:14px}
+.rl-stars{color:var(--w-ink);letter-spacing:1px;white-space:nowrap}
+.rl-off{color:var(--y-muted)}
+.rl-tools{gap:12px}
+.rl-search{position:relative;width:min(100%,280px)}
+.rl-search > .y-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--y-muted)}
+.rl-search .y-input{padding-left:38px}
+.rl-books{--pl-rec:340px}
+.rl-fav dd{font-size:18px!important;line-height:1.2!important}
+.rl-months{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;align-items:end;height:180px}
+.rl-month{display:grid;grid-template-rows:1fr auto auto;justify-items:center;height:100%;gap:2px;font-size:12px}
+.rl-bar{align-self:end;width:100%;max-width:28px;min-height:2px;border-radius:8px 8px 2px 2px;background:var(--w)}
+.rl-month small{color:var(--y-muted);font-weight:700}
+.rl-genre{display:grid;grid-template-columns:110px 1fr 26px;align-items:center;gap:10px;margin-bottom:8px;font-weight:600;font-size:14px}
+.rl-track{height:12px;border-radius:99px;background:var(--y-sunken);overflow:hidden}
+.rl-track i{display:block;height:100%;background:var(--w)}
+@media (max-width:560px){ .rl-search{width:100%} .rl-book{grid-template-columns:56px 1fr} .rl-cover{height:80px;font-size:24px} }
+.xm-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+.rj-streak{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 14px;font-weight:600}
+.rj-streak .y-icon{color:var(--w)}
+.rj-log{display:grid;grid-template-columns:minmax(0,1.6fr) 110px 110px auto;gap:10px;align-items:center}
+.rj-strip{display:grid;grid-template-columns:repeat(30,1fr);gap:4px;align-items:end;height:120px}
+.rj-day{display:flex;align-items:flex-end;height:100%;border-radius:6px;background:var(--y-sunken)}
+.rj-day i{display:block;width:100%;border-radius:6px;background:var(--w-soft)}
+.rj-day.is-on i{background:var(--w)}
+.rj-day.is-today{outline:2px solid var(--y-ink);outline-offset:1px}
+.rj-qtools{gap:12px;margin-bottom:14px}
+.rj-quotes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:14px}
+.rj-quote{display:grid;gap:10px;padding:16px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r);background:var(--y-surface)}
+.rj-quote.is-fav{background:var(--w-soft)}
+.rj-qtext.y-textarea{font:italic 600 17px/1.45 var(--y-display);border-color:transparent;background:transparent;padding:4px 2px;min-height:72px}
+.rj-qmeta{display:grid;grid-template-columns:minmax(0,1fr) 72px auto auto;gap:8px;align-items:center}
+.rj-heart{color:var(--y-muted)}.rj-heart.is-on{color:var(--w)}
+.rj-heart.is-on svg{fill:currentColor}
+.rj-cbar{display:grid;gap:8px;margin-bottom:18px}.rj-cbar p{margin:0;font-weight:700}
+.rj-cbar .y-meter{height:16px}
+.is-done .y-cell-title .y-input{text-decoration:line-through;color:var(--y-muted)}
+@media (max-width:640px){.rj-log{grid-template-columns:1fr 1fr}.rj-log select,.rj-log .y-btn{grid-column:1/-1}.rj-strip{gap:2px;height:90px}.rj-qmeta{grid-template-columns:minmax(0,1fr) 64px auto auto}}
