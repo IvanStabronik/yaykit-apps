@@ -1,0 +1,78 @@
+/* Thanksgiving Planner App — harvest world + product layout on top of kit + planner engine */
+[data-world="harvest"]{--w:#C2410C;--on-w:#FFFFFF;--w-ink:#9A3412;--w-soft:#FDE8D7;--w-2:#9F1D35;--w-2-soft:#F8DDE3;--on-w-2:#FFFFFF}
+.tg-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+
+/* overview */
+.tg-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0}
+.tg-facts div{background:var(--w-soft);border-radius:16px;padding:14px 14px 12px;min-width:0}
+.tg-facts dt{font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--w-ink)}
+.tg-facts dd{margin:6px 0 2px;font:800 26px/1.1 var(--y-display);color:var(--y-ink)}
+.tg-facts dd small{font:700 13px var(--y-sans);color:var(--y-muted)}
+.tg-facts p{margin:0;font-size:13px;color:var(--y-muted)}
+.tg-menu{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.tg-menu li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;border-top:1px solid var(--y-hair);padding-top:8px}
+.tg-menu li:first-child{border-top:0;padding-top:0}
+.tg-menu b{font-weight:800;color:var(--w-ink)}
+.tg-need{font-style:normal;font-weight:700;color:var(--y-bad)}
+
+/* turkey */
+.tg-plan{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tg-step{display:grid;grid-template-columns:40px minmax(0,150px) minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--y-sunken)}
+.tg-step-ico{grid-row:1/3;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--w-soft);color:var(--w-ink)}
+.tg-step-ico svg{width:20px;height:20px}
+.tg-step-label{font-size:13px;font-weight:800;color:var(--y-muted);text-transform:uppercase;letter-spacing:.03em}
+.tg-step-val{grid-column:3;grid-row:1/3;font:800 22px/1.15 var(--y-display);color:var(--y-ink);text-align:right}
+.tg-step-val small{font:700 13px var(--y-sans);color:var(--y-muted)}
+.tg-step-sub{grid-column:2;font-size:13px;color:var(--y-muted)}
+.tg-step--in,.tg-step--eat{background:var(--w-soft)}
+.tg-step--in .tg-step-ico,.tg-step--eat .tg-step-ico{background:var(--w);color:var(--on-w)}
+
+/* timeline */
+.tg-tools{margin:0 0 14px}
+.tg-ttab .tg-oven .y-cell-title .y-input{font-weight:700}
+.tg-ttab .is-done .y-cell-title .y-input{text-decoration:line-through;color:var(--y-muted)}
+
+/* countdown + shopping */
+.tg-when{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:16px;align-items:start}
+.tg-late{border-color:var(--y-bad)}
+.tg-mini.y-select{width:auto;min-height:44px;padding:0 28px 0 8px;border-color:var(--y-hair);font-size:12.5px;font-weight:700;background-position:right 8px center}
+.tg-who.y-input{width:88px;min-height:44px;padding:0 8px;border-color:var(--y-hair);font-size:12.5px}
+.tg-aisle{margin-top:16px}
+.tg-aisle h3{margin:0 0 8px;font:800 16px var(--y-display)}
+.tg-qty.y-input{width:84px;min-height:44px;padding:0 8px;border-color:var(--y-hair);font-size:13px}
+.tg-aisle-sel{width:132px!important}
+
+@media (max-width:760px){
+  .tg-facts{grid-template-columns:1fr}
+  .tg-facts div{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;column-gap:10px}
+  .tg-facts dd{grid-column:2;grid-row:1/3;margin:0;font-size:22px;text-align:right}
+}
+@media (max-width:560px){
+  .tg-menu li{grid-template-columns:1fr;gap:2px}
+  .tg-step{grid-template-columns:40px minmax(0,1fr) auto}
+  .tg-step-val{font-size:18px}
+  .tg-aisle .pl-ci{flex-wrap:wrap}
+  .tg-aisle .pl-ci-main{flex:1 1 calc(100% - 100px)}
+  .tg-qty.y-input{margin-left:50px}
+  .tg-aisle-sel{display:none}
+}
+.tg-col{display:grid;gap:22px;align-content:start;min-width:0}
+@media (max-width:560px){
+  .tg-step{grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto auto;row-gap:2px}
+  .tg-step-val{grid-column:2;grid-row:3;text-align:left;margin-top:4px}
+  .tg-step-sub{grid-column:2}
+}
+@media (max-width:560px){
+  /* timeline: the step on top, then time / who / done, then oven °F / minutes */
+  .tg-ttab .y-table-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;column-gap:8px;row-gap:6px}
+  .tg-ttab .y-table-row > .y-cell-title{grid-column:1/3;grid-row:1}
+  .tg-ttab .y-table-row > .pl-cell--tools{grid-column:3;grid-row:1;margin:0;justify-content:center}
+  .tg-ttab .y-table-row > [data-label="Time"]{grid-column:1;grid-row:2}
+  .tg-ttab .y-table-row > [data-label="Who"]{grid-column:2;grid-row:2}
+  .tg-ttab .y-table-row > [data-label="Done"]{grid-column:3;grid-row:2;justify-content:center}
+  .tg-ttab .y-table-row > [data-label="Oven °F"]{grid-column:1;grid-row:3}
+  .tg-ttab .y-table-row > [data-label="Minutes"]{grid-column:2;grid-row:3}
+  .tg-ttab .y-table-row > .y-cell-title::before{display:none}
+  .tg-ttab .y-input{padding-left:8px;padding-right:6px}
+}
