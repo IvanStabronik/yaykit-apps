@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Turkey Calculator: Size, Thaw Time and Cooking Time</title>
+<meta name="description" content="Free turkey calculator. Enter how many people are eating and when dinner is. Get the turkey size to buy, the day to start thawing and the time it goes in the oven.">
+<link rel="canonical" href="https://ivanstabronik.github.io/yaykit-apps/free/turkey-calculator/">
+<meta property="og:title" content="Turkey Calculator: Size, Thaw Time and Cooking Time">
+<meta property="og:description" content="How big a turkey, when to thaw it and when it goes in the oven, counted back from dinner.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ivanstabronik.github.io/yaykit-apps/free/turkey-calculator/">
+<link rel="stylesheet" href="kit/yaykit.css">
+<link rel="stylesheet" href="free.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Turkey Calculator","applicationCategory":"LifestyleApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://ivanstabronik.github.io/yaykit-apps/free/turkey-calculator/"}
+</script>
+</head>
+<body class="y-body">
+<div class="y-app" data-world="harvest">
+<main class="ft-main">
+  <div class="ft-bar">
+    <a class="y-brand" href="https://yaykit.etsy.com" rel="noopener"><span class="y-mark" aria-hidden="true">y</span><span class="y-wordmark">yaykit</span></a>
+    <nav class="ft-nav" aria-label="Free tools"><a href="../secret-santa/">Secret Santa generator</a></nav>
+  </div>
+
+  <header class="ft-head">
+    <p class="y-eyebrow">Free tool</p>
+    <h1 class="y-title">Turkey <em>calculator</em></h1>
+    <p class="y-lede">How big a bird to buy, what day to start thawing and when it goes in the oven, counted back from dinner.</p>
+  </header>
+
+  <section class="ft-tool" aria-label="Calculator">
+    <form class="y-panel" id="form" onsubmit="return false">
+      <div class="ft-fields">
+        <label class="y-field"><span class="y-label">People eating</span><input class="y-input y-input--num" id="people" type="number" min="1" max="60" inputmode="numeric" value="8"></label>
+        <label class="y-field"><span class="y-label">Turkey you bought, lb <span class="y-muted">(optional)</span></span><input class="y-input y-input--num" id="lbs" type="number" min="1" max="40" step="0.5" inputmode="decimal" placeholder="Suggest a size"></label>
+        <label class="y-field"><span class="y-label">Dinner day</span><input class="y-input" id="date" type="date"></label>
+        <label class="y-field"><span class="y-label">Dinner time</span><input class="y-input" id="time" type="time" value="16:00"></label>
+      </div>
+      <div class="ft-checks">
+        <label class="y-check"><input type="checkbox" id="leftovers"><span class="y-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span><span class="y-check-text">I want leftovers</span></label>
+        <label class="y-check"><input type="checkbox" id="stuffed"><span class="y-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span><span class="y-check-text">Stuffing inside the bird</span></label>
+        <label class="y-check"><input type="checkbox" id="fresh"><span class="y-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span><span class="y-check-text">Fresh, not frozen</span></label>
+      </div>
+    </form>
+    <div class="y-panel y-panel--tint" aria-live="polite">
+      <p class="ft-big" id="size"></p>
+      <p class="ft-sub" id="sizeSub"></p>
+      <ol class="ft-steps" id="steps"></ol>
+      <p class="ft-note" id="note" hidden></p>
+    </div>
+  </section>
+
+  <section class="y-panel ft-sell" aria-label="Thanksgiving Planner App">
+    <div>
+      <h2>Planning the whole dinner?</h2>
+      <p>The Thanksgiving Planner App adds guests, the menu and who brings what, a cooking timeline for every dish and a grocery list. It works on your phone and computer, offline, with one purchase and no subscription.</p>
+    </div>
+    <a class="y-btn y-btn--world y-btn--lg" href="https://yaykit.etsy.com/listing/4604820104" rel="noopener">See the app on Etsy</a>
+  </section>
+
+  <article class="ft-text">
+    <section>
+      <h2>How much turkey per person?</h2>
+      <p>Plan on 1.25 pounds per person, or 1.5 pounds if you want leftovers. The weight includes bones, so that is less meat than it sounds. Whole turkeys start at around 8 pounds. For two or three people, a turkey breast is often a better fit.</p>
+      <table class="ft-table"><thead><tr><th>People</th><th>Turkey</th><th>With leftovers</th></tr></thead><tbody>
+        <tr><td>6</td><td>8 lb</td><td>9 lb</td></tr>
+        <tr><td>8</td><td>10 lb</td><td>12 lb</td></tr>
+        <tr><td>10</td><td>13 lb</td><td>15 lb</td></tr>
+        <tr><td>12</td><td>15 lb</td><td>18 lb</td></tr>
+        <tr><td>16</td><td>20 lb</td><td>24 lb</td></tr>
+      </tbody></table>
+    </section>
+    <section>
+      <h2>How long does a turkey take to thaw?</h2>
+      <p>In the fridge, allow one day for every 4 pounds. A 16 lb turkey needs four days, so it goes in the fridge on Sunday for Thursday dinner. Put it on a tray on the bottom shelf. Short on time? Keep it in its wrapping in cold water for about 30 minutes per pound, change the water every 30 minutes and cook it right away.</p>
+    </section>
+    <section>
+      <h2>How long does a turkey take to cook?</h2>
+      <p>These are USDA times for a thawed turkey in a 325°F (165°C) oven.</p>
+      <table class="ft-table"><thead><tr><th>Weight</th><th>Unstuffed</th><th>Stuffed</th></tr></thead><tbody>
+        <tr><td>8–12 lb</td><td>2¾–3 h</td><td>3–3½ h</td></tr>
+        <tr><td>12–14 lb</td><td>3–3¾ h</td><td>3½–4 h</td></tr>
+        <tr><td>14–18 lb</td><td>3¾–4¼ h</td><td>4–4¼ h</td></tr>
+        <tr><td>18–20 lb</td><td>4¼–4½ h</td><td>4¼–4¾ h</td></tr>
+        <tr><td>20–24 lb</td><td>4½–5 h</td><td>4¾–5¼ h</td></tr>
+      </tbody></table>
+    </section>
+    <section>
+      <h2>How do I know the turkey is done?</h2>
+      <p>Go by a meat thermometer, not the clock. The turkey is safe at 165°F (74°C) in the thickest part of the thigh and breast, and in the center of the stuffing. Let it rest for 20 to 30 minutes before carving so the juices stay in the meat.</p>
+    </section>
+  </article>
+
+  <footer class="ft-foot">
+    <p>Times are estimates. Ovens and birds vary, so always check with a thermometer. Nothing you enter leaves your device.</p>
+    <p>Made by <a href="https://yaykit.etsy.com" rel="noopener">Yaykit</a>: small apps for real life.</p>
+  </footer>
+</main>
+</div>
+<script src="tool.js"></script>
+</body>
+</html>

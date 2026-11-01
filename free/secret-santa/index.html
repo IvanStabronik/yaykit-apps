@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Free Secret Santa Generator: Draw Names With No Sign-up</title>
+<meta name="description" content="Free Secret Santa generator. Add names, keep couples apart and send each person a private link to their match. No email, no account, nothing to install.">
+<link rel="canonical" href="https://ivanstabronik.github.io/yaykit-apps/free/secret-santa/">
+<meta property="og:title" content="Free Secret Santa Generator: Draw Names With No Sign-up">
+<meta property="og:description" content="Add names, keep couples apart and send each person a private link to their match.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ivanstabronik.github.io/yaykit-apps/free/secret-santa/">
+<link rel="stylesheet" href="kit/yaykit.css">
+<link rel="stylesheet" href="free.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Secret Santa Generator","applicationCategory":"LifestyleApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://ivanstabronik.github.io/yaykit-apps/free/secret-santa/"}
+</script>
+</head>
+<body class="y-body">
+<div class="y-app" data-world="holiday">
+<main class="ft-main">
+  <div class="ft-bar">
+    <a class="y-brand" href="https://yaykit.etsy.com" rel="noopener"><span class="y-mark" aria-hidden="true">y</span><span class="y-wordmark">yaykit</span></a>
+    <nav class="ft-nav" aria-label="Free tools"><a href="../turkey-calculator/">Turkey calculator</a></nav>
+  </div>
+
+  <section id="reveal" class="y-panel y-panel--tint ft-card" hidden aria-live="polite">
+    <p class="y-eyebrow" id="revGroup">Secret Santa</p>
+    <p class="ft-sub" id="revHello"></p>
+    <p class="ft-big"><em id="revTo"></em></p>
+    <ul class="ft-chips" id="revFacts"></ul>
+    <p class="y-hint">Keep it secret. You can open this link again any time.</p>
+    <a class="y-btn y-btn--secondary" href="./">Run your own draw</a>
+  </section>
+
+  <div id="make">
+    <header class="ft-head">
+      <p class="y-eyebrow">Free tool</p>
+      <h1 class="y-title">Secret Santa <em>generator</em></h1>
+      <p class="y-lede">Add everyone, keep couples apart and draw names. Each person gets a private link to their own match. No email, no sign-up.</p>
+    </header>
+  </div>
+
+  <section class="ft-tool" id="tool" aria-label="Secret Santa draw">
+    <div class="y-panel">
+      <div class="ft-fields">
+        <label class="y-field ft-full"><span class="y-label">Group name <span class="y-muted">(optional)</span></span><input class="y-input" id="group" maxlength="50" placeholder="Family Secret Santa"></label>
+        <label class="y-field"><span class="y-label">Spending limit <span class="y-muted">(optional)</span></span><input class="y-input" id="budget" maxlength="20" placeholder="$30"></label>
+        <label class="y-field"><span class="y-label">Gift swap on <span class="y-muted">(optional)</span></span><input class="y-input" id="date" type="date"></label>
+      </div>
+      <form class="y-inline-form" id="addForm" style="margin-top:14px">
+        <input class="y-input" id="name" maxlength="40" placeholder="Add a name" aria-label="Add a name" autocomplete="off">
+        <button class="y-btn y-btn--secondary" type="submit">Add</button>
+      </form>
+      <ul class="ft-players" id="players"></ul>
+      <p class="ft-error" id="error" hidden></p>
+    </div>
+    <div class="y-panel y-panel--tint" aria-live="polite">
+      <p class="ft-big" id="count">Add three or more names</p>
+      <p class="ft-sub" id="countSub">Use the menu next to a name to keep couples or housemates apart.</p>
+      <button class="y-btn y-btn--world y-btn--lg y-btn--block" id="draw" type="button" disabled>Draw names</button>
+      <ul class="ft-matches" id="matches"></ul>
+      <p class="y-hint" id="matchHint" hidden>Send each link to that person only. The links hold the match, so nothing is stored anywhere. They are scrambled, not locked, so this is for fun and not for secrets that matter.</p>
+    </div>
+  </section>
+
+  <section class="y-panel ft-sell" aria-label="Christmas Gift Tracker App">
+    <div>
+      <h2>Buying for more than one person?</h2>
+      <p>The Christmas Gift Tracker App keeps every gift, budget, wish list and size in one place, with stocking stuffers, printable Secret Santa slips and thank-you notes. It works on your phone and computer, offline, with one purchase and no subscription.</p>
+    </div>
+    <a class="y-btn y-btn--world y-btn--lg" href="https://yaykit.etsy.com/listing/4604819832" rel="noopener">See the app on Etsy</a>
+  </section>
+
+  <article class="ft-text" id="about">
+    <section>
+      <h2>How does this Secret Santa generator work?</h2>
+      <p>Add at least three names and press Draw names. Everyone gets one person to buy for, and nobody draws themselves. Then copy each person’s link and send it to them by text or chat, or pass your phone around and let each person tap Show.</p>
+    </section>
+    <section>
+      <h2>Can I stop couples from drawing each other?</h2>
+      <p>Yes. Open the menu next to any player and pick the person they should not draw. Those two will not draw each other in either direction. If the rules leave no fair draw, you will see a message asking you to loosen one.</p>
+    </section>
+    <section>
+      <h2>Do people need an email or an account?</h2>
+      <p>No. There is no sign-up and no email. The draw runs in your browser and nothing is sent to a server. Each match is carried inside its own link, so if you close this page the links you sent still work, but you cannot edit the draw.</p>
+    </section>
+    <section>
+      <h2>What is a good spending limit?</h2>
+      <p>Pick an amount everyone in the group can afford without thinking twice. Many groups choose between $15 and $30 for friends or coworkers. Set it here and it will show on every person’s link.</p>
+    </section>
+  </article>
+
+  <footer class="ft-foot">
+    <p>The draw is random and runs on your device. Nothing you enter is sent to anyone.</p>
+    <p>Made by <a href="https://yaykit.etsy.com" rel="noopener">Yaykit</a>: small apps for real life.</p>
+  </footer>
+</main>
+</div>
+<script src="tool.js"></script>
+</body>
+</html>
