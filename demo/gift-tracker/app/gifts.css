@@ -1,0 +1,76 @@
+/* Christmas Gift Tracker App — holiday world + product layout on top of kit + planner engine */
+[data-world="holiday"]{--w:#B4232A;--on-w:#FFFFFF;--w-ink:#8F1820;--w-soft:#FBE2E1;--w-2:#1E6B47;--w-2-soft:#DDF1E5;--on-w-2:#FFFFFF}
+.xm-gap{height:14px}
+.y-kpi dd small{font-size:.55em;color:var(--y-muted);font-weight:700}
+.is-over{color:var(--y-bad)!important}
+
+/* overview */
+.xm-prog{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.xm-prog li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(60px,1fr) 42px 116px;align-items:center;gap:12px;min-height:32px}
+.xm-prog-name{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xm-prog-n{color:var(--y-muted);font-size:13px;text-align:right}
+.xm-prog-money{text-align:right;font-weight:700}
+.xm-prog-money small{color:var(--y-muted);font-weight:500}
+.xm-big{margin:0 0 10px;font:800 34px/1.1 var(--y-display);color:var(--w-ink)}
+.xm-big small{font:600 15px var(--y-body);color:var(--y-muted)}
+.xm-mini{display:grid;gap:6px;margin:14px 0 0}
+.xm-mini div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--y-hair);padding-top:6px}
+.xm-mini dt{color:var(--y-muted)}.xm-mini dd{margin:0;font-weight:700}
+
+/* gifts */
+.xm-cell-money{display:block;font-weight:700;padding:0 6px}
+.xm-giftbar{margin:22px 0 4px}
+.xm-people{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,600px),1fr));gap:16px;align-items:start;margin-top:12px}
+.xm-person .pl-panel-actions{gap:6px;flex-wrap:wrap}
+
+/* budget */
+.xm-total .y-input{font:800 22px var(--y-display);min-height:52px}
+.xm-meter{display:block;margin:14px 0 22px}
+.xm-giftrow{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,330px) auto;align-items:center;gap:12px;padding:10px 12px;margin-bottom:12px;border-radius:14px;background:var(--w-2-soft)}
+.xm-giftrow-name{display:flex;align-items:center;gap:8px;font-weight:800}
+.xm-giftrow-name small{font-weight:500;color:var(--y-muted)}
+.xm-giftrow-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* countdown + shopping */
+.xm-when{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:16px;align-items:start}
+.xm-late{border-color:var(--y-bad)}
+.xm-mini.y-select{width:auto;min-height:40px;padding:0 28px 0 8px;border-color:var(--y-hair);font-size:12.5px;font-weight:700;background-position:right 8px center}
+.xm-who.y-input{width:88px;min-height:40px;padding:0 8px;border-color:var(--y-hair);font-size:12.5px}
+.xm-aisle{margin-top:16px}
+.xm-aisle h3{margin:0 0 8px;font:800 16px var(--y-display)}
+.xm-qty.y-input{width:84px;min-height:40px;padding:0 8px;border-color:var(--y-hair);font-size:13px}
+.xm-aisle-sel{width:132px!important}
+
+@media (max-width:560px){
+  .xm-compact .y-table-row{grid-template-columns:minmax(0,1fr) var(--xm-c2,80px) var(--xm-c3,80px)}
+  .xm-compact .y-table-row > .y-cell-title{grid-column:1/3;grid-row:1}
+  .xm-compact .y-table-row > .pl-cell--tools{grid-column:3;grid-row:1;margin:0;align-self:end}
+  .xm-gtab{--xm-c2:68px;--xm-c3:112px}
+  .xm-ctab{--xm-c2:52px;--xm-c3:64px}
+  .xm-prog li{grid-template-columns:minmax(0,1fr) 42px 96px;row-gap:4px}
+  .xm-prog li .y-meter{grid-column:1/-1;grid-row:2}
+  .xm-giftrow{grid-template-columns:1fr auto}
+  .xm-giftrow-nums{grid-column:1/-1;grid-row:2}
+  .xm-aisle .pl-ci{flex-wrap:wrap}
+  .xm-aisle .pl-ci-main{flex:1 1 calc(100% - 100px)}
+  .xm-qty.y-input{margin-left:50px}
+  .xm-aisle-sel{display:none}
+}
+
+/* gift tracker */
+.gt-buy{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.gt-buy li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;min-height:44px;border-top:1px solid var(--y-hair);padding-top:8px}
+.gt-buy li:first-child{border-top:0;padding-top:0}
+.gt-buy-main{min-width:0}.gt-buy-main b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gt-buy-main span{color:var(--y-muted);font-size:13px}
+.gt-santa{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:12px}
+.gt-santa li{display:grid;gap:8px;padding:14px;border-radius:16px;background:var(--w-soft);min-height:44px}
+.gt-santa li b{font:800 18px var(--y-display)}
+.gt-santa .gt-to{font-weight:700;color:var(--w-ink)}
+.gt-santa .gt-hidden{color:var(--y-muted)}
+.gt-santa .y-btn{justify-self:start}
+.gt-slips{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.gt-slip{border:1.5px dashed #999;border-radius:3mm;padding:5mm;break-inside:avoid}
+.gt-slip p{margin:1.5mm 0}
+.gt-slip .gt-slip-to{font-size:16pt;font-weight:800}
+@media (max-width:640px){.gt-buy li{grid-template-columns:minmax(0,1fr) auto}.gt-buy li .pl-pill{display:none}}
