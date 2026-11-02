@@ -5,7 +5,7 @@
      Planner.create({
        slug, name, world, pages: [{ id, label, icon, render(ctx), slots?, actions?, sheet?, badge? }],
        blank(), sample(), normalize?(s), open?(ctx), rows?: { listKey: () => ({…}) },
-       actions?, about?, disclaimer?, currency?, timer?: { overtime }
+       actions?, about?, disclaimer?, currency?, timer?: { overtime }, quiet?: [page ids that never show the review request]
      });
 
    Binding:  <input data-bind="path.to.value">      → state updated, saved, live slots refreshed
@@ -289,6 +289,35 @@
     }
   };
 
+  /* ---------- shop: review request + related apps ----------
+     Tags written by Tools/yaykit_shop_links.py into index.html; an app without them shows neither.
+     The ask is remembered in its own key, apart from the buyer's planner data, so Start over or Import never re-asks. */
+  const REVIEW_URL = 'https://www.etsy.com/your/purchases', SHOP_URL = 'https://yaykit.etsy.com';
+  function shop() {
+    const meta = n => { const m = document.querySelector(`meta[name="yaykit:${n}"]`); return m ? m.content.trim() : ''; };
+    const id = meta('listing');
+    if (!/^\d+$/.test(id)) return null;
+    const more = meta('more').split('|').map(s => /^(\d+) (.+)$/.exec(s.trim())).filter(Boolean)
+      .map(m => ({ name: m[2], url: `${SHOP_URL}/listing/${m[1]}` }));
+    const key = 'yaykit:ask:' + id;
+    let ask = null;
+    try { ask = JSON.parse(localStorage.getItem(key) || 'null') || {}; } catch (e) { ask = null; } // blocked storage: never ask
+    const today = D.today();
+    if (ask && ask.last !== today) {
+      ask.days = (ask.days || 0) + 1; ask.last = today;
+      try { localStorage.setItem(key, JSON.stringify(ask)); } catch (e) { ask = null; }
+    }
+    return {
+      more,
+      due: () => !!ask && !ask.answer && ask.days >= (+meta('review-after') || 3) && (!ask.snooze || ask.snooze <= D.today()),
+      answer(a) {
+        if (!ask) return;
+        if (a === 'later') { ask.later = (ask.later || 0) + 1; ask.snooze = D.add(D.today(), 10); if (ask.later >= 2) ask.answer = 'no'; } else ask.answer = a;
+        try { localStorage.setItem(key, JSON.stringify(ask)); } catch (e) { /* asked once this session is enough */ }
+      }
+    };
+  }
+
   /* ---------- engine ---------- */
   function create(app) {
     const root = document.getElementById('app') || document.querySelector('.y-app');
@@ -346,6 +375,13 @@
 
     /* shell */
     const multi = pages.length > 1;
+    const sh = shop();
+    const ext = (href, html, attr) => `<a href="${esc(href)}" target="_blank" rel="noopener"${attr || ''}>${html}</a>`;
+    const shopHelp = sh ? `<div class="pl-shop">
+              <p><b>Enjoying ${esc(app.name)}?</b> A short review on Etsy helps a small shop a lot. Open your purchase there and choose Leave a review.</p>
+              ${ext(REVIEW_URL, `${I('star')}<span>Leave a review on Etsy</span>`, ' class="y-btn y-btn--secondary y-btn--sm"')}
+              ${sh.more.length ? `<p class="y-label">More Yaykit apps</p><ul class="pl-more">${sh.more.map(m => `<li>${ext(m.url, esc(m.name))}</li>`).join('')}<li>${ext(SHOP_URL, 'See all Yaykit apps')}</li></ul>` : ''}
+            </div>` : '';
     root.innerHTML = `
       <header class="y-appbar pl-appbar">
         <div class="y-brand"><span class="y-mark" aria-hidden="true">y</span><span class="y-wordmark">yaykit</span><span class="y-product-name">${esc(app.name)}</span></div>
@@ -367,6 +403,7 @@
             ${app.about ? `<div class="pl-about">${app.about}</div>` : ''}
             <p><b>Your data stays on this device.</b> ${esc(app.name)} runs in your browser from the file you downloaded — nothing is uploaded and there is no account. It saves automatically as you type. Browser storage is not a backup: click <b>Export</b> now and then (and before clearing your browser or switching computers); <b>Import</b> brings a backup back.</p>
             ${app.disclaimer ? `<p>${esc(app.disclaimer)}</p>` : ''}
+            ${shopHelp}
             <div class="pl-data">
               ${app.currency ? `<label class="y-field pl-currency"><span class="y-label">Currency</span><select class="y-select" id="plCurrency">${optList(['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'NZD'].map(c => [c, c]), state.currency)}</select></label>` : ''}
               <button class="y-btn y-btn--secondary y-btn--sm" type="button" data-act="sample">${I('sparkle')}<span>Load example</span></button>
@@ -392,7 +429,10 @@
       const html = state.ui.sample
         ? `<div class="y-banner pl-sample">${I('sparkle')}<span><b>You’re looking at example data.</b> Explore, then start your own — the example is only here to show how it works.</span>
             <span class="pl-sample-actions">${ui.btn('Start my own', { kind: 'world', sm: true, act: 'blank', data: { from: 'sample' } })}${ui.btn('Keep example', { kind: 'ghost', sm: true, act: 'sample-keep' })}</span></div>`
-        : '';
+        : sh && !(state.ui.welcome && current() === pages[0]) && !(app.quiet || []).includes(current().id) && sh.due()
+          ? `<div class="y-banner pl-sample pl-ask" role="region" aria-label="Review request">${I('star')}<span><b>Is ${esc(app.name)} helping?</b> A short review on Etsy helps a small shop a lot.</span>
+            <span class="pl-sample-actions">${ext(REVIEW_URL, `<span>Leave a review</span>`, ' class="y-btn y-btn--world y-btn--sm" data-ask="done"')}<button type="button" class="y-btn y-btn--ghost y-btn--sm" data-ask="later">Later</button><button type="button" class="y-btn y-btn--ghost y-btn--sm" data-ask="no">No thanks</button></span></div>`
+          : '';
       if (banner.__h !== html) { banner.innerHTML = html; banner.__h = html; }
     }
     function welcome() {
@@ -589,6 +629,8 @@
       return true;
     }
     root.addEventListener('click', e => {
+      const ask = e.target.closest('[data-ask]');
+      if (ask && sh) { sh.answer(ask.dataset.ask); renderBanner(); if (ask.dataset.ask !== 'done') Y.toast(ask.dataset.ask === 'later' ? 'I’ll ask again in a while' : 'Got it, I won’t ask again'); return; }
       const tab = e.target.closest('[data-page]');
       if (tab && nav && nav.contains(tab)) { go(tab.dataset.page); return; }
       const b = e.target.closest('[data-act]');
@@ -680,5 +722,5 @@
     return ctx;
   }
 
-  window.Planner = { version: '1.0.0', create, ui, D, num, has, uid, get, set, clone, clock, plural };
+  window.Planner = { version: '1.1.0', create, ui, D, num, has, uid, get, set, clone, clock, plural };
 })();

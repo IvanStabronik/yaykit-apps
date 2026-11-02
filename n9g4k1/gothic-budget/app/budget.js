@@ -9,13 +9,15 @@
   const r2 = n => Math.round(n * 100) / 100;
   const list = (v, map) => (Array.isArray(v) ? v : []).filter(x => x && typeof x === 'object').map(map);
 
+  const SKIN = Object.assign({ slug: 'budget-planner-app', name: 'Budget Planner', world: 'money' }, window.BUDGET_SKIN);   // the Gothic and ADHD editions set their own
+
   /* ---------- model ---------- */
   const bill = (name, amount, due, auto) => ({ id: P.uid(), name: name || '', amount: amount == null ? '' : String(amount), due: due == null ? '' : String(due), auto: !!auto });
   const cat = (name, plan) => ({ id: P.uid(), name: name || '', plan: plan == null ? '' : String(plan) });
   function blank() {
     return {
       pay: { take: '', freq: 'biweekly', next: D.add(D.today(), 7), balance: '', buffer: '' },
-      bills: [], paid: {}, cats: [cat('Groceries'), cat('Gas & transport'), cat('Eating out'), cat('Fun'), cat('Household')], spends: [],
+      bills: [], paid: {}, checkin: {}, cats: [cat('Groceries'), cat('Gas & transport'), cat('Eating out'), cat('Fun'), cat('Household')], spends: [],
       goals: [], debts: [], extra: '', strategy: 'snowball', notes: ''
     };
   }
@@ -43,6 +45,7 @@
     };
     // the example always has $412.60 safe to spend, whatever bills fall before payday on the day you open it
     out.pay.balance = r2(safe(out).dueSum + 100 + 412.6).toFixed(2);
+    if (SKIN.adhd) { out.checkin = { [t]: { balance: true } }; out.notes = 'Check in after coffee, two minutes.\n\nOver the plan? Fix one thing, not the whole month.\n\nFun money is for fun — no guilt.'; }
     return out;
   }
   function normalize(s) {
@@ -55,8 +58,11 @@
     s.spends = list(s.spends, x => ({ id: txt(x.id) || P.uid(), date: D.parse(x.date) ? x.date : D.today(), cat: txt(x.cat), amount: txt(x.amount), note: txt(x.note) }));
     s.goals = list(s.goals, g => ({ id: txt(g.id) || P.uid(), name: txt(g.name), target: txt(g.target), saved: txt(g.saved), by: D.parse(g.by) ? g.by : '' }));
     s.debts = list(s.debts, d => ({ id: txt(d.id) || P.uid(), name: txt(d.name), balance: txt(d.balance), apr: txt(d.apr), min: txt(d.min) }));
+    s.checkin = Object.fromEntries(Object.keys(s.checkin || {}).filter(k => D.parse(k) && s.checkin[k] && typeof s.checkin[k] === 'object')
+      .map(k => [k, Object.fromEntries(STEPS.filter(x => s.checkin[k][x[0]]).map(x => [x[0], true]))]));
     s.extra = txt(s.extra); s.strategy = s.strategy === 'avalanche' ? 'avalanche' : 'snowball'; s.notes = txt(s.notes);
     s.ui.draft = Object.assign({ amount: '', cat: '', note: '' }, s.ui.draft || {});
+    s.ui.price = txt(s.ui.price);
     return s;
   }
 
@@ -121,6 +127,25 @@
   }
   const monthAction = { month(ctx, d) { const s = ctx.state; if (+d.n === 0) { s.ui.month = ymOf(D.today()); return; } const x = D.parse(`${ym(s)}-15`); x.setMonth(x.getMonth() + +d.n); s.ui.month = D.iso(x).slice(0, 7); } };
 
+  /* ---------- ADHD edition: can I afford this, and a two-minute check-in ---------- */
+  const STEPS = [['balance', 'Type today’s balance'], ['log', 'Log what you spent'], ['bill', 'Look at the next bill']];
+  const checkedDays = (s, m) => Object.keys(s.checkin).filter(k => ymOf(k) === m && Object.keys(s.checkin[k]).length === STEPS.length).length;
+  function canBuy(ctx) {
+    const s = ctx.state, price = P.num(s.ui.price), x = safe(s);
+    if (!(price > 0)) return '<p class="pl-muted">Type the price before you tap Buy.</p>';
+    if (!x.hasBalance) return '<p class="pl-muted">Type the money in your account first, then this can answer.</p>';
+    const after = r2(x.left - price), perDay = r2(after / x.days);
+    if (after < 0) return `<div class="bp-answer is-no"><b>Not before payday</b><p>It would leave you ${esc(ctx.money(-after))} short. Payday is ${esc(D.short(x.pay))}, ${x.days} ${x.days === 1 ? 'day' : 'days'} away — it can wait until then.</p></div>`;
+    return `<div class="bp-answer is-yes"><b>Yes, you can</b><p>You would still have ${esc(ctx.money(after))} safe to spend, ${esc(ctx.money(perDay))} a day until payday.</p></div>`;
+  }
+  function adhdPanels(s) {
+    const t = D.today(), day = s.checkin[t] || {};
+    return `<div class="pl-grid">
+      ${u.panel('Can I afford this?', `${u.field('Price', 'ui.price', s.ui.price, { num: true, ph: '45.00' })}<div data-slot="canbuy"></div>`, { icon: 'money', cls: 'pl-6' })}
+      ${u.panel('Two-minute check-in', `<ul class="pl-checklist bp-check">${STEPS.map(([k, l]) => `<li class="pl-ci">${u.tick(`checkin.${t}.${k}`, !!day[k], l, { rerender: true })}<div class="pl-ci-main"><span class="pl-ci-text">${esc(l)}</span></div></li>`).join('')}</ul><div data-slot="checked"></div>`, { icon: 'check', cls: 'pl-6' })}
+    </div>`;
+  }
+
   /* ---------- pages ---------- */
   function spendForm(s) {
     const d = s.ui.draft;
@@ -154,11 +179,17 @@
           ${u.field('Take-home pay', 'pay.take', s.pay.take, { num: true, ph: '2150', hint: 'After tax, per paycheck.' })}
           ${u.field('Keep as a buffer', 'pay.buffer', s.pay.buffer, { num: true, ph: '100', optional: true })}</div>`, { icon: 'edit' })}
       </div>
+      ${SKIN.adhd ? adhdPanels(s) : ''}
       ${u.panel('Bills before payday', '<div data-slot="due"></div>', { icon: 'calendar', hint: 'Tick a bill when it is paid — it leaves this list and stops counting against you.' })}
       ${u.panel('Log spending', `${spendForm(s)}<div data-slot="month"></div>`, { icon: 'plus' })}
       ${u.notes('notes', s.notes, { rows: 5, title: 'Money notes', ph: 'Payday rules, what you are saving for, reminders…' })}`;
     },
     slots: {
+      canbuy: canBuy,
+      checked(ctx) {
+        const s = ctx.state, n = checkedDays(s, ymOf(D.today())), day = s.checkin[D.today()] || {}, done = Object.keys(day).length === STEPS.length;
+        return `<p class="pl-muted bp-check-sum">${done ? 'Done for today. That is the whole job.' : 'A missed day costs nothing. Start again today.'} ${n ? `${P.plural(n, 'day')} checked in this month.` : ''}</p>`;
+      },
       headline(ctx) { const x = safe(ctx.state); return x.hasBalance ? `<em>${esc(ctx.money(x.left, { cents: false }))}</em> ${x.left < 0 ? 'short' : 'safe to spend'}` : 'How much can I <em>spend</em>?'; },
       safe(ctx) {
         const s = ctx.state, x = safe(s);
@@ -309,7 +340,6 @@
     }
   };
 
-  const SKIN = Object.assign({ slug: 'budget-planner-app', name: 'Budget Planner', world: 'money' }, window.BUDGET_SKIN);   // the Gothic edition sets its own
   P.create({
     slug: SKIN.slug, name: SKIN.name, world: SKIN.world, currency: true,
     welcome: 'Start with two numbers: the money in your account now and your next payday.',
@@ -320,7 +350,7 @@
       cat: () => cat(), bill: () => bill('', '', ''), debt: () => ({ id: P.uid(), name: '', balance: '', apr: '', min: '' }),
       goal: () => ({ id: P.uid(), name: '', target: '', saved: '', by: D.add(D.today(), 180) })
     },
-    about: '<p><b>Budget Planner</b> answers the question you actually ask: how much can I spend until payday? It takes your balance, subtracts the bills due before payday and a small buffer, and shows what is left — per day, too. Add a monthly spending plan, a bill list you tick off, a debt payoff plan (snowball or avalanche) and savings goals.</p>',
-    disclaimer: 'Budget Planner is a personal budgeting tool, not financial advice. Debt-free dates are estimates that assume the same payments and interest every month.'
+    about: SKIN.about || '<p><b>Budget Planner</b> answers the question you actually ask: how much can I spend until payday? It takes your balance, subtracts the bills due before payday and a small buffer, and shows what is left — per day, too. Add a monthly spending plan, a bill list you tick off, a debt payoff plan (snowball or avalanche) and savings goals.</p>',
+    disclaimer: SKIN.disclaimer || 'Budget Planner is a personal budgeting tool, not financial advice. Debt-free dates are estimates that assume the same payments and interest every month.'
   });
 })();

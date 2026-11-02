@@ -285,6 +285,7 @@
     slug: 'christmas-feud-game', name: 'Christmas Feud', world: 'holiday',
     welcome: 'Name the two teams on Setup, then press Play. Stage mode puts the board full screen on the TV.',
     pages: [play, final, setup, boards, print],
+    quiet: ['play', 'final'], // no review request on the screens the room is watching
     blank, sample, normalize,
     timer: { doneText: 'Time’s up!', onTick(ctx, left) { document.querySelectorAll('.y-timer').forEach(el => el.classList.toggle('is-low', ctx.timer.state.running && left <= 5)); } },
     rows: { answers: () => ({ text: '', points: '5' }) },

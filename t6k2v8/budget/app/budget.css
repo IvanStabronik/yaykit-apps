@@ -32,6 +32,12 @@
 .bp-goal-head .pl-title-input{flex:1;font:800 20px var(--y-display)}
 .bp-goal-fields{grid-template-columns:1fr 1fr 1.2fr}
 .bp-goal-sum{margin:0;font-weight:600}
+.bp-answer{margin-top:12px;padding:12px 14px;border-radius:14px;border:2px solid var(--y-ink)}
+.bp-answer b{font:800 20px var(--y-display)}
+.bp-answer p{margin:4px 0 0}
+.bp-answer.is-yes{background:var(--w-soft)}
+.bp-answer.is-no{background:var(--w-2-soft)}
+.bp-check-sum{margin:12px 0 0}
 @media (max-width:860px){
   .bp-top{grid-template-columns:1fr}
   .bp-add{grid-template-columns:1fr 1fr}

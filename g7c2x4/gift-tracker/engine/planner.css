@@ -38,6 +38,10 @@
 .pl-sample{align-items:center;flex-wrap:wrap;margin:0 0 18px;background:var(--w-2-soft)}
 .pl-sample > span:nth-child(2){flex:1 1 280px}
 .pl-sample-actions{display:flex;gap:8px;flex-wrap:wrap}
+.pl-shop{margin:4px 0 12px}
+.pl-shop .y-label{margin-top:14px}
+.pl-more{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 18px}
+.pl-more a{display:inline-flex;align-items:center;min-height:40px;color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 
 /* KPIs */
 .pl-kpis{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}

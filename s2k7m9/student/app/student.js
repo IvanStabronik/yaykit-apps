@@ -357,10 +357,11 @@
     }
   };
 
+  const SKIN = Object.assign({ slug: 'student-planner-app', name: 'Student Planner', world: 'study' }, window.STUDENT_SKIN);   // the Dark Academia edition sets its own
   P.create({
-    slug: 'student-planner-app',
-    name: 'Student Planner',
-    world: 'study',
+    slug: SKIN.slug,
+    name: SKIN.name,
+    world: SKIN.world,
     welcome: 'Add your courses first — the schedule, assignments and grades all use them.',
     pages: [today, schedule, tasks, exams, grades, study, cards],
     blank, sample, normalize,
