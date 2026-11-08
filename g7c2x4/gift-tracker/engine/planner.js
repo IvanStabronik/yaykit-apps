@@ -176,7 +176,7 @@
     },
     kpis(list) {
       return `<dl class="y-kpis pl-kpis">${list.filter(Boolean).map(([label, value, cls, sub]) =>
-        `<div class="y-kpi${cls ? ' ' + cls : ''}"><dt>${esc(label)}</dt><dd>${value}</dd>${sub ? `<p class="pl-kpi-sub">${sub}</p>` : ''}</div>`).join('')}</dl>`;
+        `<div class="y-kpi${cls ? ' ' + cls : ''}"><dt>${esc(label)}</dt><dd>${value}</dd>${sub ? `<dd class="pl-kpi-sub">${sub}</dd>` : ''}</div>`).join('')}</dl>`;
     },
     meter(pct, label, o) {
       o = o || {};

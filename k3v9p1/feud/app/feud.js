@@ -239,7 +239,7 @@
       return `${u.head({ eyebrow: 'Christmas Feud', title: 'Print', lede: 'Paper for the host. Pick one, check the preview, then press Print.' })}
       <div class="pl-row fd-printpick">${u.seg('ui.pk', pk, SHEETS.map(k => [k[0], k[1]]), 'What to print')}<span class="pl-spacer"></span>${u.btn('Print this', { kind: 'world', icon: 'print', act: 'print' })}</div>
       <p class="pl-hint">${esc(SHEETS.find(k => k[0] === pk)[2])}</p>
-      <div class="y-paper-shell fd-preview"><div class="y-paper pl-paper">${sheet(ctx)}</div></div>`;
+      <div class="y-paper-shell fd-preview" tabindex="0" role="region" aria-label="Print preview"><div class="y-paper pl-paper">${sheet(ctx)}</div></div>`;
     },
     sheet: ctx => sheet(ctx)
   };

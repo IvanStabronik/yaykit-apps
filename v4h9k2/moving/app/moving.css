@@ -21,7 +21,7 @@
 .hh-homes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,370px),1fr));gap:18px;align-items:start}
 .hh-home{display:grid;gap:14px;padding:16px;border:var(--y-border) solid var(--y-ink);border-radius:var(--y-r-lg);background:var(--y-surface)}
 .hh-home.is-top{box-shadow:var(--y-lift-lg);background:linear-gradient(var(--w-soft),var(--y-surface) 150px)}
-.hh-home.is-passed{opacity:.6}
+.hh-home.is-passed{border-style:dashed;filter:grayscale(1)}
 .hh-home-head{display:flex;align-items:flex-start;gap:8px}
 .hh-rank{display:grid;place-items:center;flex:none;min-width:44px;height:44px;padding:0 6px;border:var(--y-border) solid var(--y-ink);border-radius:12px;background:var(--w-2);color:var(--on-w-2);font:800 18px var(--y-display);transform:rotate(-4deg)}
 .hh-home.is-top .hh-rank{background:var(--w);color:var(--on-w)}

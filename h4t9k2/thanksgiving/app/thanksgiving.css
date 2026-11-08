@@ -9,7 +9,7 @@
 .tg-facts dt{font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--w-ink)}
 .tg-facts dd{margin:6px 0 2px;font:800 26px/1.1 var(--y-display);color:var(--y-ink)}
 .tg-facts dd small{font:700 13px var(--y-sans);color:var(--y-muted)}
-.tg-facts p{margin:0;font-size:13px;color:var(--y-muted)}
+.tg-facts dd.tg-note{margin:0;font:400 13px/1.35 var(--y-sans);color:var(--y-muted)}
 .tg-menu{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .tg-menu li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;border-top:1px solid var(--y-hair);padding-top:8px}
 .tg-menu li:first-child{border-top:0;padding-top:0}
@@ -47,6 +47,7 @@
   .tg-facts{grid-template-columns:1fr}
   .tg-facts div{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;column-gap:10px}
   .tg-facts dd{grid-column:2;grid-row:1/3;margin:0;font-size:22px;text-align:right}
+  .tg-facts dd.tg-note{grid-column:1;grid-row:2;font-size:13px;text-align:left}
 }
 @media (max-width:560px){
   .tg-menu li{grid-template-columns:1fr;gap:2px}

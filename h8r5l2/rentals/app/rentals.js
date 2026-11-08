@@ -288,7 +288,7 @@
       summary(ctx) {
         const s = ctx.state, list = yearByProp(s, D.today().slice(0, 4)), used = CATS.filter(c => list.some(x => x.cats[c]));
         if (!list.length) return '<p class="pl-muted">Add a property first.</p>';
-        return `<div class="rp-sum-wrap"><table class="rp-sum"><thead><tr><th>Category</th>${list.map(x => `<th>${esc(x.p.name || 'Unnamed')}</th>`).join('')}<th>Total</th></tr></thead><tbody>
+        return `<div class="rp-sum-wrap" tabindex="0" role="region" aria-label="Expenses by category and property"><table class="rp-sum"><thead><tr><th>Category</th>${list.map(x => `<th>${esc(x.p.name || 'Unnamed')}</th>`).join('')}<th>Total</th></tr></thead><tbody>
           <tr class="rp-sum-in"><td>Rent collected</td>${list.map(x => `<td class="y-num">${esc(ctx.money(x.income, { cents: false }))}</td>`).join('')}<td class="y-num">${esc(ctx.money(list.reduce((a, x) => a + x.income, 0), { cents: false }))}</td></tr>
           ${used.map(c => `<tr data-cat="${esc(c)}"><td>${esc(c)}</td>${list.map(x => `<td class="y-num">${x.cats[c] ? esc(ctx.money(x.cats[c], { cents: false })) : '—'}</td>`).join('')}<td class="y-num">${esc(ctx.money(list.reduce((a, x) => a + x.cats[c], 0), { cents: false }))}</td></tr>`).join('')}
           <tr class="rp-sum-net"><td>Net</td>${list.map(x => `<td class="y-num ${x.net < 0 ? 'is-over' : ''}">${esc(ctx.money(x.net, { cents: false }))}</td>`).join('')}<td class="y-num">${esc(ctx.money(list.reduce((a, x) => a + x.net, 0), { cents: false }))}</td></tr></tbody></table></div>`;

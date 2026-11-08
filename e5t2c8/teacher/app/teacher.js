@@ -145,7 +145,7 @@
   const cur = s => s.classes.find(c => c.id === s.ui.cls) || s.classes[0];
   const clsOf = (s, cid) => s.classes.find(c => c.id === cid);
   const lesson = (s, mon, d, pid) => ((s.lessons[mon] || [])[d] || {})[pid] || {};
-  const wk = s => (D.parse(s.ui.week) ? s.ui.week : (s.ui.week = D.monday(D.today())));
+  const wk = s => (D.parse(s.ui.week) ? s.ui.week : (s.ui.week = weekOf(D.today()).mon));   // the school week: on Sat/Sun that is next week, as on Today
   const periodsOn = (s, d) => s.periods.filter(p => s.timetable[d][p.id]);
   const allStudents = s => s.classes.flatMap(c => c.students.filter(x => P.has(x.name)).map(x => Object.assign({ cls: c.name }, x)));
   const timeOf = p => [p.start, p.end].filter(Boolean).map(D.time).join(' – ');
@@ -235,7 +235,7 @@
     render(ctx) {
       const s = ctx.state, c = cur(s);
       if (!c) return `${u.head({ eyebrow: 'Lesson plans', title: 'Plan the <em>week</em>' })}${noClass()}`;
-      const mon = wk(s), isThis = mon === D.monday(D.today()), hasPrev = !!s.lessons[D.add(mon, -7)];
+      const mon = wk(s), isThis = mon === weekOf(D.today()).mon, hasPrev = !!s.lessons[D.add(mon, -7)];
       return `${u.head({ eyebrow: `${c.name || 'Class'} · lesson plans`, title: `Week of <em>${esc(D.short(mon))}</em>`, lede: 'One card per day for this class. Copy last week and change what’s new.',
         meta: `<div class="te-nav" role="group" aria-label="Choose a week">${u.iconBtn('prev', 'Previous week', 'week', { n: -7 })}<span class="y-num">${esc(D.short(mon))} – ${esc(D.short(D.add(mon, 4)))}</span>${u.iconBtn('next', 'Next week', 'week', { n: 7 })}${isThis ? '' : u.btn('This week', { sm: true, act: 'week', data: { n: 0 } })}</div>` })}
       ${classChips(s)}
@@ -246,7 +246,7 @@
           : '<p class="pl-muted">Not on the timetable this day.</p>'}</article>`; }).join('')}</div>`;
     },
     actions: {
-      week(ctx, d) { const s = ctx.state; s.ui.week = +d.n === 0 ? D.monday(D.today()) : D.add(wk(s), +d.n); },
+      week(ctx, d) { const s = ctx.state; s.ui.week = +d.n === 0 ? weekOf(D.today()).mon : D.add(wk(s), +d.n); },
       copyWeek(ctx) {
         const s = ctx.state, mon = wk(s), prev = s.lessons[D.add(mon, -7)], c = cur(s);
         if (!prev || !c) return false;

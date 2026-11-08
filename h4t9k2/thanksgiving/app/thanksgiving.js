@@ -163,9 +163,9 @@
         const s = ctx.state, b = bird(s);
         if (!b.lbs) return u.empty('timer', 'How big a turkey?', 'Add who’s coming on Guests — the bird size, thaw day and oven time fill in.', u.btn('Add guests', { kind: 'world', icon: 'user', act: 'go', data: { page: 'guests' } }));
         return `<dl class="tg-facts">
-          <div><dt>Buy</dt><dd class="y-num">${b.lbs} lb <small>${b.kg} kg</small></dd><p>${b.own ? 'the bird you bought' : `for ${P.plural(b.people, 'person', 'people')}`}</p></div>
-          <div><dt>Thaw from</dt><dd class="y-num">${b.thawOn ? esc(D.fmt(b.thawOn)) : '—'}</dd><p>${s.turkey.fresh ? 'fresh, no thawing' : `${P.plural(b.thaw, 'day')} in the fridge`}</p></div>
-          <div><dt>In the oven</dt><dd class="y-num">${b.inAt != null ? esc(D.time(hm(b.inAt))) : '—'}</dd><p>${b.inAt != null ? `${deg(TURKEY_F)}` : 'set the dinner time'}</p></div></dl>`;
+          <div><dt>Buy</dt><dd class="y-num">${b.lbs} lb <small>${b.kg} kg</small></dd><dd class="tg-note">${b.own ? 'the bird you bought' : `for ${P.plural(b.people, 'person', 'people')}`}</dd></div>
+          <div><dt>Thaw from</dt><dd class="y-num">${b.thawOn ? esc(D.fmt(b.thawOn)) : '—'}</dd><dd class="tg-note">${s.turkey.fresh ? 'fresh, no thawing' : `${P.plural(b.thaw, 'day')} in the fridge`}</dd></div>
+          <div><dt>In the oven</dt><dd class="y-num">${b.inAt != null ? esc(D.time(hm(b.inAt))) : '—'}</dd><dd class="tg-note">${b.inAt != null ? `${deg(TURKEY_F)}` : 'set the dinner time'}</dd></div></dl>`;
       },
       next(ctx) {
         const s = ctx.state, b = bird(s), list = openPrep(s).sort((a, z) => WHEN_OFF[a.when] - WHEN_OFF[z.when]).slice(0, 5), t = D.today();

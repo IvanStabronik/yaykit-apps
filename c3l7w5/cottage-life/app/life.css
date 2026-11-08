@@ -101,7 +101,7 @@
 .bp-big{margin:0;font:800 clamp(44px,6vw,72px)/1 var(--y-display);letter-spacing:-.03em}
 .bp-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:6px 0 0}
 .bp-mini div{padding:10px 12px;border:2px solid currentColor;border-radius:14px}
-.bp-mini dt{font:700 12px var(--y-sans);letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.bp-mini dt{font:700 12px var(--y-sans);letter-spacing:.06em;text-transform:uppercase}
 .bp-mini dd{margin:4px 0 0;font:800 18px/1.1 var(--y-display)}
 .bp-warn{display:flex;gap:8px;align-items:flex-start;margin:0;padding:10px 12px;border-radius:12px;background:var(--y-surface);color:var(--y-bad);font-weight:700}
 .bp-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
